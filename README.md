@@ -1,3 +1,8 @@
+# Setup Django and the virtual environment
+
+https://www.w3schools.com/django/django_create_virtual_environment.php
+
+
 # Inspiration
 
 https://www.ozharvest.org/food-waste-facts/
