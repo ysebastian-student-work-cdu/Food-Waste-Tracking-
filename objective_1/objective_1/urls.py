@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from listitems import views
+from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', views.home),
 
-    #list page items
+    #core pages
+    path('', views.index, name='index'),
+    path('list', views.list, name='list'),
+    #path('detail', views.detail, name='detail'),
+    path('data_model', views.data_model, name='data_model'),
+
+    #list page item details
     path('why-not-waste-food', views.reasons),
 ]
