@@ -1,31 +1,26 @@
-from django.shortcuts import render
-from . import items
+from django.http import HttpResponse
+from django.template import loader
 
-# Create your views here.
-
-# Core pages
 def index(request):
-    return render(request, 'users/index.html',{})
+    return HttpResponse(loader.get_template('index.html').render())
 
-def list(request):
-    return render(request, 'users/list.html',{})
-
-#def detail(request):
-#   return render(request, 'users/detail.html',{})
+def facts(request):
+    return HttpResponse(loader.get_template('facts.html').render())
 
 def data_model(request):
-    return render(request, 'users/data_model.html',{})
+    return HttpResponse(loader.get_template('data_model.html').render())
 
-# Details
-def detail(request, id):
-    if id == 'why-not-food-waste':
-        context = {'item':items.reasons}
-        page = 'users/details.html'
-    elif id == 'resources':
-        context = {'item':resources}
+def reasons(request):
+    return HttpResponse(loader.get_template('reasons.html').render())
 
-     # rest of items go here
+def benefits(request):
+    return HttpResponse(loader.get_template('benefits.html').render())
 
-    return render(request, page, context)
+def solutions(request):
+    return HttpResponse(loader.get_template('solutions.html').render())
 
+def resources(request):
+    return HttpResponse(loader.get_template('resources.html').render())
 
+def calculator(request):
+    return HttpResponse(loader.get_template('calculator.html').render())
