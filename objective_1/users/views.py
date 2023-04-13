@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . import items
 
 # Create your views here.
 
@@ -16,5 +17,15 @@ def data_model(request):
     return render(request, 'users/data_model.html',{})
 
 # Details
-def reasons(request):
-	return render(request, 'users/reasons.html')
+def detail(request, id):
+    if id == 'why-not-food-waste':
+        context = {'item':items.reasons}
+        page = 'users/details.html'
+    elif id == 'resources':
+        context = {'item':resources}
+
+     # rest of items go here
+
+    return render(request, page, context)
+
+

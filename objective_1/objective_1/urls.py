@@ -28,5 +28,5 @@ urlpatterns = [
     path('data_model', views.data_model, name='data_model'),
 
     #list page item details
-    path('why-not-waste-food', views.reasons),
+    path('items/<id>', views.detail),
 ]

@@ -1,0 +1,40 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+
+{% block title %}
+{{ item.title }}
+{% endblock %}
+
+{% block content %}
+
+{% for content in item.content %}
+<div>
+    {% autoescape off %}
+    <p> {{ content }}</p>
+    {% endautoescape %}
+
+</div>
+{% endfor %}
+
+
+
+{% endblock %}
+
+
+<!--
+E.g. Layout
+
+Title
+
+Content 1                           |   Image
+                                    |
+                                    |
+                                    |
+
+Content 2                           |   Image
+                                    |
+                                    |
+                                    |
+
+-->
