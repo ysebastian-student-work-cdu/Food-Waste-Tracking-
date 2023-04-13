@@ -1,0 +1,28 @@
+<nav>
+    {% url 'index' as index_url %}
+    <div>{% if request.path == index_url %}Home{% else %}<a href="{{ index_url }}">Home</a>{% endif %}</div>
+
+    {% url 'facts' as facts_url %}
+    <div>{% if request.path == facts_url %}Facts about Food Waste{% else %}<a href="{{ facts_url }}">Facts about Food Waste</a>{% endif %}</div>
+
+   <!-- {% url 'detail' as detail_url %}
+    <span>{% if request.path == detail_url %}Detail{% else %}<a href="{{ detail_url }}">Detail</a>{% endif %}</span> -->
+
+    {% url 'data_model' as data_model_url %} 
+    <div>{% if request.path == data_model_url %}Data Model{% else %}<a href="{{ data_model_url }}">Data Model</a>{% endif %}</div>
+
+    {% url 'reasons' as reasons_url %} 
+    <div>{% if request.path == reasons_url %}Why Food Waste is a problem{% else %}<a href="{{ reasons_url }}">Why Food Waste is a problem</a>{% endif %}</div>
+
+    {% url 'benefits' as benefits_url %} 
+    <div>{% if request.path == benefits_url %}Benefits of Food Waste Reduction{% else %}<a href="{{ benefits_url }}">Benefits of Food Waste Reduction</a>{% endif %}</div>
+
+    {% url 'solutions' as solutions_url %} 
+    <div>{% if request.path == solutions_url %}Solutions to Food Waste{% else %}<a href="{{ solutions_url }}">Solutions to Food Waste</a>{% endif %}</div>
+
+    {% url 'resources' as resources_url %} 
+    <div>{% if request.path == resources_url %}External Resources{% else %}<a href="{{ resources_url }}">External Resources</a>{% endif %}</div>
+
+    {% url 'calculator' as calculator_url %} 
+    <div>{% if request.path == calculator_url %}Food Waste Calculator{% else %}<a href="{{ calculator_url }}">Food Waste Calculator</a>{% endif %}</div>
+</nav>
