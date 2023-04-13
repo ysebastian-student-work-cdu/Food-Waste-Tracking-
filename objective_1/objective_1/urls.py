@@ -24,7 +24,9 @@ urlpatterns = [
     #core pages
     path('', views.index, name='index'),
     path('list', views.list, name='list'),
-    #path('detail', views.detail, name='detail'),
+    path('detail', views.detail, name='detail'),
+    path('benefits', views.list, name='benefits'),
+    path('solutions', views.list, name='solutions'),
     path('data_model', views.data_model, name='data_model'),
 
     #list page item details

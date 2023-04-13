@@ -9,8 +9,8 @@ def index(request):
 def list(request):
     return render(request, 'users/list.html',{})
 
-#def detail(request):
-#   return render(request, 'users/detail.html',{})
+def detail(request):
+    return render(request, 'users/detail.html',{})
 
 def data_model(request):
     return render(request, 'users/data_model.html',{})

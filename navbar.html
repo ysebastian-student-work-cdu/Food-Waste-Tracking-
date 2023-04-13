@@ -7,4 +7,9 @@
     <span>{% if request.path == detail_url %}Detail{% else %}<a href="{{ detail_url }}">Detail</a>{% endif %}</span>
     {% url 'data_model' as data_model_url %}
     <span>{% if request.path == data_model_url %}Data Model{% else %}<a href="{{ data_model_url }}">Data Model</a>{% endif %}</span>
+
+    <span>{% if request.path == benefits_url %}Benefits{% else %}<a href="{{ benefits_url }}">Benefits of Food Waste Reduction</a>{% endif %}</span>
+
+    <span>{% if request.path == solutions_url %}Solutions{% else %}<a href="{{ solutions_url }}">Solutions to Food Waste</a>{% endif %}</span>
+
 </div>
