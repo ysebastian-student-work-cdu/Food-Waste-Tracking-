@@ -10,5 +10,11 @@ def list(request):
 def detail(request):
     return render(request, 'detail.html',{})
 
+def benefits(request):
+    return render(request, 'benefits.html',{})
+
+def solutions(request):
+    return render(request, 'solutions.html',{})
+
 def data_model(request):
     return render(request, 'data_model.html',{})
