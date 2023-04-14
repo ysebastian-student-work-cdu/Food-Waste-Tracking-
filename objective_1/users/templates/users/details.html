@@ -1,6 +1,6 @@
 {% extends "users/__base.html" %}
 {% load static %}
-
+{% load index %}            
 
 {% block title %}
 {{ item.title }}
@@ -14,9 +14,9 @@
     <p> {{ content }}</p>
     {% endautoescape %}
 
-    {% if item.images%}
+    {% if item.images|index:forloop.counter0 %}
 
-    <img src="{% static items.images[0]  %} " />
+    <img src="{% static item.images|index:forloop.counter0 %} " />
 
     {% endif %}
 
