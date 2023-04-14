@@ -10,4 +10,5 @@ urlpatterns = [
     path('solutions', views.solutions, name='solutions'),
     path('resources', views.resources, name='resources'),
     path('calculator', views.calculator, name='calculator'),
+    path('items/<id>', views.detail)
 ]

@@ -1,4 +1,4 @@
-{% extends "users/base.html" %}
+{% extends "users/__base.html" %}
 {% load static %}
 
 
@@ -13,6 +13,12 @@
     {% autoescape off %}
     <p> {{ content }}</p>
     {% endautoescape %}
+
+    {% if item.images%}
+
+    <img src="{% static items.images[0]  %} " />
+
+    {% endif %}
 
 </div>
 {% endfor %}
