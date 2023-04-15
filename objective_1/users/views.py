@@ -15,8 +15,8 @@ def data_model(request):
 #def facts(request):
  #   return HttpResponse(loader.get_template('users/facts.html').render())
 
-#def reasons(request):
- #   return HttpResponse(loader.get_template('users/reasons.html').render())
+def reasons(request):
+    return HttpResponse(loader.get_template('users/reasons.html').render())
 
 #def benefits(request):
  #   return HttpResponse(loader.get_template('users/benefits.html').render())
@@ -41,6 +41,7 @@ def detail(request, id):
         context = {}
         page = "users/notfound.html"
 
+    page = 'users/details.html'
     return render(request, page, context)
 
 

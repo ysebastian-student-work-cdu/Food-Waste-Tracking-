@@ -91,18 +91,20 @@
         background-size: cover;
         transition: transform 0.5s;
     }
+    
     .card1{
-        background-image: img src="{% static 'image/cause.png'%}";
+        background-image: url(/static/images/cause.png);
     }
     .card2{
-        background-image: url(/static/image/benefit.png);
+        background-image: url(/static/images/benefit.png);
     }
     .card3{
-        background-image: url(/static/image/solution.png);
+        background-image: url(/static/images/solution.png);
     }
     .card4{
-        background-image: url(/static/image/calculator.png);
+        background-image: url(/static/images/calculator.png);
     }
+        
     .card:hover{
         transform: translateY(-10px);
     }
@@ -110,9 +112,17 @@
         color: rgb(17, 73, 54);
         text-shadow: 0 0 5px #999;
     }
-   .card p{
+    .card p {
         font-size: 8px;
         color: rgb(104, 60, 60);
+    }
+    .image{    
+            height: 150px;
+            width:200px;
+            object-fit: cover;
+            transition: background-color 300ms;
+            border-radius:25px;
+    }
     }
 </style>
    
@@ -143,27 +153,27 @@
                 <button type="button">Explore</button>
             </div>
             <div class="col">
-                <img src="{% static 'image/cause.png'%}"/>
                 <div class="card card1">
+                    <img class="image" src="{% static 'users/images/cause.png'%}" />
                     <h5>Impacts</h5>
                     <p>It impacts mainly on economy and environment.</p>
                 </div>
                 <div class="card card2">
-                    <img src="{% static 'image/benefit.png'%}"/>
+                    <img class="image" src="{% static 'users/images/benefit.png'%}" />
                     <h5>Benefits</h5>
                     <p>Food-waste management is beneficial for environmental,economical,social perspective.</p>
                 </div>
                 <div class="card card3">
-                    <img src="{% static 'image/solution.png'%}"/>
+                    <img class="image" src="{% static 'users/images/solution.png'%}" />
                     <h5>Food-waste Solution</h5>
                     <p>We need to solve food waste problem with proper and effective solution.</p>
                 </div>
                 <div class="card card4">
-                    <img src="{% static 'image/calcuator.png'%}"/>
+                    <img class="image" src="{% static 'users/images/calculator.png'%}" />
                     <h5>Food Calculator</h5>
                     <p>With proper use of food calculation we can solve many wastage.</p>
                 </div>
-                
+
             </div>
         </div>
      </div>
