@@ -4,10 +4,14 @@ from django.shortcuts import render
 from . import items
 
 def index(request):
-    return HttpResponse(loader.get_template('users/index.html').render())
+    return render(request, 'users/index.html')
 
 def data_model(request):
-    return HttpResponse(loader.get_template('users/data_model.html').render())
+    return render(request, 'users/data_model.html')
+
+def list(request):
+    return render(request, 'users/list.html')
+    
 
 
 # Old Item Pages (We should delete the commented out section)
