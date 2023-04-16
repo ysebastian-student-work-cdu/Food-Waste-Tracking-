@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="{% static 'users/css/styles.css' %}">
-
+    {% block title %}
     <title>Food Waste</title>
+    {% endblock %}
 </head>
 <body>
     {% include 'users/navbar.html' %}

@@ -15,8 +15,8 @@ def data_model(request):
 #def facts(request):
  #   return HttpResponse(loader.get_template('users/facts.html').render())
 
-def reasons(request):
-    return HttpResponse(loader.get_template('users/reasons.html').render())
+#def reasons(request):
+    #return HttpResponse(loader.get_template('users/reasons.html').render())
 
 #def benefits(request):
  #   return HttpResponse(loader.get_template('users/benefits.html').render())
@@ -34,14 +34,13 @@ def calculator(request):
 # New function to handle item url lookup
 # Details
 def detail(request, id):
+    page = 'users/details.html'
     try:
         context = {'item':items.Item_Class.find(id)}
-        page = "users/{}.html".format(id)
+        #page = "users/{}.html".format(id)
     except:
         context = {}
         page = "users/notfound.html"
-
-    page = 'users/details.html'
     return render(request, page, context)
 
 

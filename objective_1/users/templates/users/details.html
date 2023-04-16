@@ -1,14 +1,16 @@
-{% extends "users/__base.html" %}
+﻿{% extends "users/__base.html" %}
 {% load static %}
 {% load index %}            
 
+
 {% block title %}
-{{ item.title }}
+<title> {{ item.tit♦le }} </title>
 {% endblock %}
 
 {% block content %}
 
 {% for content in item.content %}
+<h1> {{ item.title }}</h1>
 <div>
     {% autoescape off %}
     <p> {{ content }}</p>

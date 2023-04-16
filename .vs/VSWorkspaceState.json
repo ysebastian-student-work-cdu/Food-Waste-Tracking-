@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\objective_1",
+    "\\objective_1\\users",
+    "\\objective_1\\users\\images",
+    "\\objective_1\\users\\images\\users",
+    "\\objective_1\\users\\static",
+    "\\objective_1\\users\\static\\users",
+    "\\objective_1\\users\\static\\users\\images",
+    "\\objective_1\\users\\templates",
+    "\\objective_1\\users\\templates\\users"
+  ],
+  "SelectedNode": "\\objective_1\\users\\templates\\users\\__base.html",
+  "PreviewInSolutionExplorer": false
+}
