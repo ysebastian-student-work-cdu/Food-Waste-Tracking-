@@ -133,13 +133,15 @@
            <a href="header.html"><img src="{% static 'image/food.png'%}"/></a> 
             <div class="nav-links">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Causes of food-waste</a></li>
-                    <li><a href="">Benefits of waste reduction</a></li>
-                    <li><a href="">Solutions</a></li>
-                    <li><a href="">Data Model</a></li>
-                    <li><a href="">Food-waste calculator</a></li>
-                    <li><a href="">External resourses</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if navbar == 'Home' %} active {% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if navbar == 'list' %} active {% endif %}" href="{% url 'list' %}">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if navbar == 'data_model' %} active {% endif %}" href="{% url 'data_model' %}">Data model</a>
+                    </li>
                 </ul>
             </div>
         </nav>
