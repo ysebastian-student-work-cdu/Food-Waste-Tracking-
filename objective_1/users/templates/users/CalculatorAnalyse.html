@@ -38,7 +38,7 @@
     </div>
     <div class="content1">
       
-      {% if analyzed_text >= 2 %}
+      {% if analyzed_text < 5 %}
       <span>
         See the carbon Impact it created could be utilised instead for:</span>
       <div class="bootstrap">
@@ -116,9 +116,88 @@
           </div>
         </div>
       </div>
-      {% endif %}
-    </div>
+    
 
+      <!-- Second if statement for carbon impact more than 5  -->
+      {% else %}
+      <span>
+        See the carbon Impact it created could be utilised instead for:</span>
+      <div class="bootstrap">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item-black">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                Fuel your car for 6 kilometers
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                You could use your car from palmerston to Jetty for free!!
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                Power your Computer for an hour
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Could have generated more than 10 Watt of power
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+                Waste generated to almost 5 McSpicy burgers
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                You could have eaten 5 burgers for free!!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+    </div>
+    {% endif %}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
