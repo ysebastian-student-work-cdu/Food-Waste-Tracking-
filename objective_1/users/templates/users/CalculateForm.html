@@ -1,0 +1,61 @@
+
+{% extends '__base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .titledoc {
+        color: rgb(4, 4, 5);
+        align-items: center;
+      }
+      .form {
+        
+        justify-content: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: rgb(139, 138, 150);
+      }
+      .formcontent {
+        font-family:  Tahoma, Geneva, Verdana, sans;
+      }
+      .submit{
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %}
+    <div class="form">
+      <h1 class="titledoc">This is a sample food waste calculator</h1>
+
+      <form action="/analyze" method="get">
+        <div class="formcontents">
+          How many People did you buy food for? <br />
+          <input type="number" name="number_of_people" /><br />
+        </div>
+        <div class="formcontents">
+          How many kilos did you throw Away?<br />
+          <input type="number" name="kilos" /><br />
+        </div>
+        <div class="formcontents">
+          How many times in a week do you buy fresh food?<br />
+          <input type="number" name="frequency_of_buying" /><br />
+        </div>
+        <div class="formcontents">
+          How old are you?<br />
+          <input type="number" name="age" />
+        </div>
+        <br />
+        <br />
+        <div class="submit">
+        <input type="submit" /></div>
+      </form>
+    </div>
+    {% endblock %}
+  </body>
+</html>
