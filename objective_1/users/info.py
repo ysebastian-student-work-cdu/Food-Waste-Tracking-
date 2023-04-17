@@ -5,4 +5,4 @@ class Info:
         self.impact =impact
     def __str__(self):
 
-        return str(self.city) + ", " + str(self.wastage) + ", " + str(self.impact)
+        return str(self.city) + ", " + str(self.wastage)+ "Kgs" + ", " +"has impact on " + str(self.impact)+ " people"

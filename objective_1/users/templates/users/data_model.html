@@ -3,5 +3,26 @@
 {% block content %}
 
     <h1>Data Model</h1>
-    <h2>{{ var }}</h2>
+    
+
+    <table class="table table-striped-my-7">
+        <thead>
+          <tr>
+            <th scope="col">Sr. no</th>
+            <th scope="col">City</th>
+            <th scope="col">Food Waste in Kgs</th>
+            <th scope="col">Number of people affected </th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for info in var %}
+          <tr>
+            <th scope="row-my-3">{{forloop.counter}}</th>
+            <td>{{info.city}}</td>
+            <td>{{info.wastage}}</td>
+            <td>{{info.impact}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 {% endblock%}

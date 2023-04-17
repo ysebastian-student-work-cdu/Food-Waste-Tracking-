@@ -63,10 +63,10 @@ def detail(request, id):
 
 def create_wastage():
     Waste=[]
-    Waste.append(str(Info("Perth",3000,"2000 People")))
-    Waste.append(str(Info("Melbourne",54000,"100000 People")))
-    Waste.append(str(Info("Sydney",58000,"120000 People")))
-    Waste.append(str(Info("Darwin",2322,"1200 People")))
+    Waste.append((Info("Perth",3000,"2000 People")))
+    Waste.append((Info("Melbourne",54000,"100000 People")))
+    Waste.append((Info("Sydney",58000,"120000 People")))
+    Waste.append((Info("Darwin",2322,"1200 People")))
     
     return Waste
     
