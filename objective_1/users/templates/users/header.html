@@ -156,23 +156,27 @@
             </div>
             <div class="col">
                 <div class="card card1">
+
                     <img class="image" src="{% static 'users/images/cause.png'%}" />
                     <h5>Impacts</h5>
                     <p>It impacts mainly on economy and environment.</p>
                 </div>
                 <div class="card card2">
+                    {% url 'impacts' as impacts_url %}
                     <img class="image" src="{% static 'users/images/benefit.png'%}" />
-                    <h5>Benefits</h5>
+                    <h5><a href="{{ impacts_url }}">Benefits</a></h5>
                     <p>Food-waste management is beneficial for environmental,economical,social perspective.</p>
                 </div>
                 <div class="card card3">
+                    {% url 'solutions' as solutions_url %}
                     <img class="image" src="{% static 'users/images/solution.png'%}" />
-                    <h5>Food-waste Solution</h5>
+                    <h5><h5><a href="{{ solutions_url }}">Food-waste Solution</a></h5>
                     <p>We need to solve food waste problem with proper and effective solution.</p>
                 </div>
                 <div class="card card4">
-                    <img class="image" src="{% static 'users/images/calculator.png'%}" />
-                    <h5>Food Calculator</h5>
+                    {% url 'calculator' as calculator_url %}
+                    </a><img class="image" src="{% static 'users/images/calculator.png'%}" />
+                    <h5><a href="{{ calculator_url }}">Food Calculator</a></h5>
                     <p>With proper use of food calculation we can solve many wastage.</p>
                 </div>
 

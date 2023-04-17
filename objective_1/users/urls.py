@@ -6,7 +6,9 @@ urlpatterns = [
     path('data_model', views.wastage, name='data_model'),
     path('list', views.list, name='list'),
     path('calculator', views.Calindex, name='calculator'),
-    path('analyze', views.calculator, name='calculator'),
+    path('analyze', views.calculator, name='calculator_analyzed'),
+    path('solutions', views.solutions, name='solutions'),
+    path('impacs', views.impacts, name='impacts'),
 
     path('items/<id>', views.detail),
 

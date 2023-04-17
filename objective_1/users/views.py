@@ -16,8 +16,8 @@ def list(request):
 
 # Old Item Pages (We should delete the commented out section)
 
-#def facts(request):
- #   return HttpResponse(loader.get_template('users/facts.html').render())
+def impacts(request):
+   return HttpResponse(loader.get_template('users/facts.html').render())
 
 #def reasons(request):
     #return HttpResponse(loader.get_template('users/reasons.html').render())
@@ -25,8 +25,8 @@ def list(request):
 #def benefits(request):
  #   return HttpResponse(loader.get_template('users/benefits.html').render())
 
-#def solutions(request):
- #   return HttpResponse(loader.get_template('users/solutions.html').render())
+def solutions(request):
+   return HttpResponse(loader.get_template('users/solutions.html').render())
 
 #def resources(request):
  #   return HttpResponse(loader.get_template('users/resources.html').render())
