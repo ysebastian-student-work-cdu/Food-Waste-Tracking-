@@ -9,15 +9,5 @@ urlpatterns = [
     path('analyze', views.calculator, name='calculator_analyzed'),
     path('solutions', views.solutions, name='solutions'),
     path('impacs', views.impacts, name='impacts'),
-
     path('items/<id>', views.detail),
-
-    # Need to delete below
-    
-    #path('facts', views.facts, name='facts'),
-    #path('reasons', views.reasons, name='reasons'),
-    #path('benefits', views.benefits, name='benefits'),
-    #path('solutions', views.solutions, name='solutions'),
-    #path('resources', views.resources, name='resources'),
-    
 ]

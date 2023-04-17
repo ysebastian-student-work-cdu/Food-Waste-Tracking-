@@ -63,11 +63,11 @@ reasons = Item_Class(
 
 facts = Item_Class(
     
-    name = 'facts',
+    name = 'impacts',
 
     title = "Facts about Food Waste",
 
-    content = '''
+    content = ['''
         <ul>
 
         <li>Approximately one-third of all food produced globally is lost or wasted. This amounts to 1.3 billion tons of food annually. (FAO)</li>
@@ -90,7 +90,7 @@ facts = Item_Class(
         
         <li>Food recovery programs can help divert edible food from landfills and provide it to people in need. In the United States, food recovery programs could provide an additional 1.8 billion meals annually to people in need. (ReFED)</li>
     </ul>
-    '''
+    ''']    
 )
 
 resources = Item_Class(

@@ -9,8 +9,8 @@
 
 {% block content %}
 
-{% for content in item.content %}
 <h1> {{ item.title }}</h1>
+{% for content in item.content %}
 <div>
     {% autoescape off %}
     <p> {{ content }}</p>
