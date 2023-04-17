@@ -15,7 +15,7 @@ class Item_Class:
         self.addItem(name)
         
     
-    # Adds a new page entry to the pages dictionary in views
+    # Adds a new page entry to the static dictionary 
     def addItem(self,name):
         if type(name) == str:
             Item_Class.names[name] = self
