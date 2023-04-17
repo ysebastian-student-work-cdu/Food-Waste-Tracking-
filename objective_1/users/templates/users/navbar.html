@@ -1,6 +1,6 @@
 <nav>
     {% url 'index' as index_url %}
-    <div>{% if request.path == index_url %}Home{% else %}<a href="{{ index_url }}">Home</a>{% endif %}</div>
+    <div style="font:black;">{% if request.path == index_url %}Home{% else %}<a href="{{ index_url }}">Home</a>{% endif %}</div>
 
     {% url 'list' as list_url %}
     <div>{% if request.path == list_url %}List{% else %}<a href="{{ list_url }}">List</a>{% endif %}</div>
