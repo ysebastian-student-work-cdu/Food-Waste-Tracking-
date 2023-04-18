@@ -11,6 +11,12 @@ def data_model(request):
 
 def list(request):
     return render(request, 'users/list.html')
+
+def header(request):
+    return render(request, 'header.html',{})
+
+def footer(request):
+    return render(request, 'footer.html',{})
     
 
 
