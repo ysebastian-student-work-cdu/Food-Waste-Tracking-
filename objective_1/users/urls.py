@@ -9,5 +9,5 @@ urlpatterns = [
     path('analyze', views.calculator, name='calculator_analyzed'),
     # path('solutions', views.solutions, name='solutions'),
     path('impacs', views.impacts, name='impacts'),
-    path('items/<id>', views.detail),
+    path('items/<id>', views.detail, name='items'),
 ]

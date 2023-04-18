@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>List</h1>
+<p> This page displays a list of all the iteams required by the project brief.</p>
+<h3>List of items for this project are:</h3>
+<ul>
+    <li>Home page:<br>(index.html) Contains home page of this website.<br><a href="{% url 'index' %}">Go to Home </a></li> 
+    <li>Fact page (facts.html):
+        <br>Contains facts about foodwaste.<br><a href="{% url 'facts' %}">Go to Fact page </a>
+    </li> 
+    <li>Reason: <br>Contains reasons of food waste.<br><a href="{% url 'items' %}">Go to Reasons</a></li> 
+    <li>Impacts: <br>Contains impacts of food waste.<br><a href="{% url 'items' %}">Go to Impacts</a></li>
+    <li>Solutions:<br> Contains solutions of food waste.<br><a href="{% url 'items' %}">Go to Solutions</a></li> 
+    <li>Benefits: <br> Contains benefits of food waste.<br><a href="{% url 'items' %}">Go to Benefits</a></li> 
+    <li>Calculator</li> 
+    <li>Details (details.html): Contains Information about each iteam of project brief.<br><a href="{% url 'details' %}">Go to Details</a></li> 
+    <li>Data model (data_model.html): <br> Describes the data model of the website.<br><a href="{% url 'data_model' %}">Go to Data model </a></li> 
+    <li>Resources (resources.html): <br> Contains resourses.<br><a href="{% url 'items' %}">Go to Resources </a></li>
+</ul>
+{% endblock%}
