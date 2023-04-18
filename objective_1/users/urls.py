@@ -10,6 +10,6 @@ urlpatterns = [
     path('footer', views.footer, name='footer'),
     path('header', views.header, name='header'),
     # path('solutions', views.solutions, name='solutions'),
-    path('impacs', views.impacts, name='impacts'),
+    path('impacts', views.impacts, name='impacts'),
     path('items/<id>', views.detail, name='items'),
 ]
