@@ -9,9 +9,14 @@ def index(request):
 def data_model(request):
     return render(request, 'users/data_model.html')
 
-def list(request):    
-    context = {'item_list':items.Item_Class.getItems()}
-    return render(request, 'users/list.html', context)
+def list(request):
+    return render(request, 'users/list.html')
+
+def header(request):
+    return render(request, 'header.html',{})
+
+def footer(request):
+    return render(request, 'footer.html',{})
     
 
 
@@ -42,6 +47,7 @@ def detail(request, id):
     page = 'users/details.html'
     try:
         context = {'item':items.Item_Class.find(id)}
+        #page = "users/{}.html".format(id)
     except:
         context = {}
         page = "users/notfound.html"
