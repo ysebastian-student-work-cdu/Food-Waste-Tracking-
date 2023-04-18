@@ -1,45 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-
-
-<nav class="navbar navbar-dark bg-dark">
-    <!-- Navbar content -->
- 
-    {% url 'index' as index_url %}
-    <div style="color: aliceblue;">{% if request.path == index_url %}Home{% else %}<a href="{{ index_url }}">Home</a>{% endif %}</div>
-
-    {% url 'list' as list_url %}
-    <div>{% if request.path == list_url %}List{% else %}<a href="{{ list_url }}">List</a>{% endif %}</div>
-
-    {% url 'data_model' as data_model_url %}
-    <div>{% if request.path == data_model_url %}Data Model{% else %}<a href="{{ data_model_url }}">Data Model</a>{% endif %}</div>
-
-    <!--{% url 'facts' as facts_url %}
-    <div>{% if request.path == facts_url %}Facts about Food Waste{% else %}<a href="{{ facts_url }}">Facts about Food Waste</a>{% endif %}</div>
-
-    {% url 'reasons' as reasons_url %}
-    <div>{% if request.path == reasons_url %}Why Food Waste is a problem{% else %}<a href="{{ reasons_url }}">Why Food Waste is a problem</a>{% endif %}</div>
-
-    {% url 'benefits' as benefits_url %}
-    <div>{% if request.path == benefits_url %}Benefits of Food Waste Reduction{% else %}<a href="{{ benefits_url }}">Benefits of Food Waste Reduction</a>{% endif %}</div>
-
-    {% url 'solutions' as solutions_url %}
-    <div>{% if request.path == solutions_url %}Solutions to Food Waste{% else %}<a href="{{ solutions_url }}">Solutions to Food Waste</a>{% endif %}</div>
-
-    {% url 'calculator' as calculator_url %}
-    <div>{% if request.path == calculator_url %}Food Waste Calculator{% else %}<a href="{{ calculator_url }}">Food Waste Calculator</a>{% endif %}</div>
-
-    {% url 'resources' as resources_url %}
-    <div>{% if request.path == resources_url %}External Resources{% else %}<a href="{{ resources_url }}">External Resources</a>{% endif %}</div>
-        -->
+<nav>
+    <div class="nav-links">
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link {% if navbar == 'Home' %} active {% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if navbar == 'list' %} active {% endif %}" href="{% url 'list' %}">List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if navbar == 'data_model' %} active {% endif %}" href="{% url 'data_model' %}">Data model</a>
+            </li>
+        </ul>
+    </div>
 </nav>
-</body>
-</html>
+

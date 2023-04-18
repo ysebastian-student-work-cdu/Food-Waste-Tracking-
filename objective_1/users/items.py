@@ -2,28 +2,36 @@ from . import views
 
 class Item_Class:
     
-    names= {}
+    items= []
          
-    def find(item):
+    def find(name):
+        for item in Item_Class.items:
+            if item.name == name:
+                return item
+            
         return Item_Class.names[item]
+
+    def getItems():
+        return Item_Class.items
+     
+
     
     def __init__(self, name, title = '', content = '', images = ''):
         self.name = name
         self.title = title
         self.content = content
         self.images = images
-        self.addItem(name)
+        self.addItem()
         
     
     # Adds a new page entry to the static dictionary 
-    def addItem(self,name):
-        if type(name) == str:
-            Item_Class.names[name] = self
+    def addItem(self):
+        Item_Class.items.append(self)
 
         
         
         
-
+item_list = []
 	
 
 reasons = Item_Class(
@@ -34,7 +42,7 @@ reasons = Item_Class(
 
     content = ['''
         <h2>
-            Climate impact to a warming
+            Climate impact to a warming planet
         </h2>
         <p>
             What do flying, plastic production and oil extraction have in common? All these activities have a lower emissions impact on our warming planet than food waste.

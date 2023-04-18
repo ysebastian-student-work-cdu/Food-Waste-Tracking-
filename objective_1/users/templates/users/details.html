@@ -3,6 +3,8 @@
 {% load index %}            
 
 
+<link rel="stylesheet" href="{% static 'users/header_style' %}" media= "screen" />
+
 {% block title %}
 <title> {{ item.title }} </title>
 {% endblock %}
@@ -11,17 +13,14 @@
 
 <h1> {{ item.title }}</h1>
 {% for content in item.content %}
-<div>
-    {% autoescape off %}
-    <p> {{ content }}</p>
-    {% endautoescape %}
-
+<div class="detail content">
     {% if item.images|index:forloop.counter0 %}
-
-    <img src="{% static item.images|index:forloop.counter0 %} " />
-
+    <img class="image detail" src="{% static item.images|index:forloop.counter0 %} " />
     {% endif %}
 
+    {% autoescape off %}
+    {{ content }}
+    {% endautoescape %}
 </div>
 {% endfor %}
 
