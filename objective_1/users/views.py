@@ -6,6 +6,9 @@ from .info import Info
 def index(request):
     return render(request, 'users/index.html')
 
+def invalid(request, invalid):
+    return render(request, 'users/notfound.html')
+
 def data_model(request):
     return render(request, 'users/data_model.html')
 
