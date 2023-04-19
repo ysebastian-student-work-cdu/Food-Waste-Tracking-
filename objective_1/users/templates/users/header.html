@@ -193,6 +193,7 @@
                         <p>We need to solve food waste problem with proper and effective solution.</p>
                 </div>
                 <div class="card card4">
+                    {% url 'calculator' as calculator_url %}
                     <img class="image" src="{% static 'users/images/calculator.png'%}" />
                     <h5><a href="{% url 'calculator' %}">Food Calculator</a></h5>
                     <p>With proper use of food calculation we can solve many wastage.</p>
