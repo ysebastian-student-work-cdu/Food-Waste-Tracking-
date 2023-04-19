@@ -12,12 +12,17 @@
     {% endblock %}
 </head>
 <body>
+    <style>
+        .footer{
+            padding-top: 100px;
+        }
+    </style>
     {% include 'users/header.html' %}
     <br />
     <div class="container">
         {% block content %}
         {% endblock%}
-    </div>
+    </div class="footer">
     {% include 'users/footer.html' %}
 </body>
 </html>
