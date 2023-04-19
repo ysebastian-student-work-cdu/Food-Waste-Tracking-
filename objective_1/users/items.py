@@ -186,4 +186,7 @@ benefits = Item_Class(
         <li>Innovation and new business opportunities: Food waste reduction can spur innovation and the development of new technologies and business models, creating new economic opportunities and jobs in the food sector.</li>
     </ul>
     ''']
+
+    
 )
+

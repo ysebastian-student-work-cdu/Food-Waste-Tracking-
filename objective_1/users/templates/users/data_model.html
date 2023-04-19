@@ -2,27 +2,97 @@
 
 {% block content %}
 
-    <h1>Data Model</h1>
-    
+<h1>Data Model</h1>
 
-    <table class="table table-striped-my-7">
-        <thead>
-          <tr>
+<h2>Base Model for Items</h2>
+<table style="margin-bottom:15px;">
+    <th>
+        <tr>
+            <th>Field</th>
+            <th>Purpose</th>
+            <th>Data type</th>
+            <th>Constraints</th>
+        </tr>
+    </th>
+
+    <tb>
+        <tr>
+            <td>id</td><td>primary key of table</td><td>numeric</td><td>primary key</td>
+        </tr>
+        <tr>
+            <td>name</td><td>used to resolve item url</td><td>text</td><td>unique key</td>
+        </tr>
+        <tr>
+            <td>title</td><td>title of item</td><td>text</td><td></td>
+        </tr>
+        <tr>
+            <td>content</td><td>display item's structured html data on webpage</td><td>text</td><td></td>
+        </tr>
+        <tr>
+            <td>images</td><td>display images of item on webpage</td><td>text</td><td></td>
+        </tr>
+    </tb>
+
+</table>
+
+
+<h2>Data model for dynamic items</h2>
+<h3>Food Waste Calculator</h3>
+<table class="table table-striped-my-7">
+    <thead>
+        <tr>
             <th scope="col">Sr. no</th>
             <th scope="col">City</th>
             <th scope="col">Food Waste in Kgs</th>
             <th scope="col">Number of people affected </th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for info in var %}
-          <tr>
+        </tr>
+    </thead>
+    <tbody>
+        {% for info in var %}
+        <tr>
             <th scope="row-my-3">{{forloop.counter}}</th>
             <td>{{info.city}}</td>
             <td>{{info.wastage}}</td>
             <td>{{info.impact}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-{% endblock%}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+<h3>Shopping List Maker (In development)</h3>
+<table style="margin-bottom:15px;">
+    <th>
+    <tr>
+        <th>Field</th>
+        <th>Purpose</th>
+        <th>Data type</th>
+        <th>Constraints</th>
+    </tr>
+    </th>
+
+    <tb>
+        <tr>
+            <td>User_ID</td>
+            <td>used to identify specific user data</td>
+            <td>numeric</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Food_item</td>
+            <td>the food item in user shopping list</td>
+            <td>text</td>
+            <td>user can enter any item</td>
+        </tr>
+        <tr>
+            <td>Amount</td>
+            <td>number of specific item in shopping list</td>
+            <td>numeric</td>
+            <td>Maximum 10</td>
+        </tr>
+    </tb>
+</table>
+
+
+    {% endblock%}
