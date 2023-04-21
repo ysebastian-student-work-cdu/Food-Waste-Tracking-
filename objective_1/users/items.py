@@ -95,9 +95,7 @@ facts = Item_Class(
         <li>Consumers can play an important role in reducing food waste. In the United States, households are responsible for 43% of all food waste, and reducing household food waste could save consumers up to $1,500 annually. (ReFED)</li>
 
         <li>Sustainable food production and consumption practices can help reduce food waste. For example, using sustainable agricultural practices, such as reducing pesticide use and improving soil health, can reduce food waste by increasing crop yields and reducing post-harvest losses. (FAO)</li>
-        
-        <li>Food recovery programs can help divert edible food from landfills and provide it to people in need. In the United States, food recovery programs could provide an additional 1.8 billion meals annually to people in need. (ReFED)</li>
-    </ul>
+        </ul>
     ''']    
 )
 
