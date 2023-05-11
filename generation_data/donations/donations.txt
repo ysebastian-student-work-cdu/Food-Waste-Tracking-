@@ -1,0 +1,9 @@
+Create a python script that will generate between 5000 and 6000 records in .csv format with the following columns:
+
+donationID: integer
+orgID: random integer between 1 and 135
+donationDate: date between 17th April 2021 and 6th May 2023, but generated sequentially.
+
+The date can have some variation in it, as it's expected some users might put in a donation entry from up to a week or two earlier.
+
+The records should be evenly spread between the start and end date, however adjacent records have a 30% chance they have the same date.
