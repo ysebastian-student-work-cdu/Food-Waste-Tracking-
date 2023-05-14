@@ -40,11 +40,16 @@ def calculator(request):
         
 
         food_Waste= (kilos*frequency_of_buying)/(number_of_people)
-        
+        if food_Waste<5:
 
-        params = {'purpose': 'calculated food waste', 'analyzed_text': int(food_Waste)}
 
-        return render(request,'users/CalculatorAnalyse.html',params)
+            params = {'purpose': 'calculated food waste', 'analyzed_text': int(food_Waste)}
+
+            return render(request,'users/CalculatorAnalyse.html',params)
+        else:
+            params = {'purpose': 'calculated food waste', 'analyzed_text': int(food_Waste)}
+            return render(request,'users/CalculatorAnalyse1.html',params)
+            
     except: 
         return render(render, "users/notfound.html")
 
