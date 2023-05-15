@@ -3,6 +3,8 @@ from django.template import loader
 from django.shortcuts import render
 from . import items
 from .info import Info
+from .models import WasteCollection
+
 def index(request):
     return render(request, 'users/index.html')
 
@@ -83,3 +85,15 @@ def wastage(request):
         'var':create_wastage()
     }
     return render(request,'users/data_model.html',context)
+
+def wastelist(request):
+    wastelist= WasteCollection.objects.all()
+    return render(request, 'users/wastelist.html', {'wastelist': wastelist})
+
+
+
+
+
+
+
+
