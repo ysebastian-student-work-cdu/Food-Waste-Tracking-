@@ -4,7 +4,7 @@
 
 <h1>Data Model</h1>
 
-<h2>Base Model for Items</h2>
+<h2>Base Data Model for Items</h2>
 <table style="margin-bottom:15px;">
     <th>
         <tr>
@@ -74,10 +74,16 @@
 
     <tb>
         <tr>
-            <td>User_ID</td>
+            <td>user_ID</td>
             <td>used to identify specific user data</td>
             <td>numeric</td>
             <td></td>
+        </tr>
+        <tr>
+            <td>item_id</td>
+            <td>Foreign key of base data model for item</td>
+            <td>numeric</td>
+            <td>Unique Key</td>
         </tr>
         <tr>
             <td>Food_item</td>
@@ -86,7 +92,7 @@
             <td>user can enter any item</td>
         </tr>
         <tr>
-            <td>Amount</td>
+            <td>amount</td>
             <td>number of specific item in shopping list</td>
             <td>numeric</td>
             <td>Maximum 10</td>

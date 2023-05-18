@@ -6,11 +6,21 @@ from .info import Info
 def index(request):
     return render(request, 'users/index.html')
 
+def invalid(request, invalid):
+    return render(request, 'users/notfound.html')
+
 def data_model(request):
     return render(request, 'users/data_model.html')
 
-def list(request):
-    return render(request, 'users/list.html')
+def list(request):    
+    context = {'item_list':items.Item_Class.getItems()}
+    return render(request, 'users/list.html', context)
+
+def header(request):
+    return render(request, 'header.html',{})
+
+def footer(request):
+    return render(request, 'footer.html',{})
     
 
 
@@ -22,18 +32,21 @@ def impacts(request):
 def Calindex(request):
     return render(request, 'users/CalculateForm.html')
 def calculator(request):
-    number_of_people=int(request.GET.get('number_of_people'))
-    kilos=int(request.GET.get('kilos'))
-    frequency_of_buying=int(request.GET.get('frequency_of_buying'))
-    age=int(request.GET.get('age'))
-    
+    try:
+        number_of_people=int(request.GET.get('number_of_people'))
+        kilos=int(request.GET.get('kilos'))
+        frequency_of_buying=int(request.GET.get('frequency_of_buying'))
+        age=int(request.GET.get('age'))
+        
 
-    food_Waste= (kilos*frequency_of_buying)/(number_of_people)
-    
+        food_Waste= (kilos*frequency_of_buying)/(number_of_people)
+        
 
-    params = {'purpose': 'calculated food waste', 'analyzed_text': int(food_Waste)}
+        params = {'purpose': 'calculated food waste', 'analyzed_text': int(food_Waste)}
 
-    return render(request,'users/CalculatorAnalyse.html',params)
+        return render(request,'users/CalculatorAnalyse.html',params)
+    except: 
+        return render(render, "users/notfound.html")
 
 # New function to handle item url lookup
 # Details
@@ -41,6 +54,7 @@ def detail(request, id):
     page = 'users/details.html'
     try:
         context = {'item':items.Item_Class.find(id)}
+        #page = "users/{}.html".format(id)
     except:
         context = {}
         page = "users/notfound.html"
