@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website hit237</title>
+    <link rel="stylesheet" href="{% static 'header_style.css' %}">
+
+</head>
+<body>
+    <section class="header">
+        {% include 'users/navbar.html' %}
+        <div class="row">
+            <div class="col">
+                <h1 class="title">Food-waste:<br>causes and solutions</h1>
+                <p class="head">
+                    This website is about protecting global food chain by raising awareness and educating <br>people about food-waste and discussion about its proper mitigation.
+                </p>
+                <!--
+            </p>
+            <button type="button">Explore</button>
+            -->
+            </div>
+            <div class="col">
+                <div class="card card1">
+
+                    <img class="image" src="{% static 'users/images/cause.png'%}" />
+                    <h5><a href="{% url 'items' 'impacts'%}">Impacts</a></h5>
+                    <p>It impacts mainly on economy and environment.</p>
+                </div>
+                <div class="card card2">
+                    {% url 'items' as item_url %}
+                    <img class="image" src="{% static 'users/images/benefit.png'%}" />
+                    <h5><a href="{% url 'items' 'benefits'%}">Benefits</a></h5>
+                    <p>Food-waste management is beneficial for environmental,economical,social perspective.</p>
+                </div>
+                <div class="card card3">
+
+                    <img class="image" src="{% static 'users/images/solution.png'%}" />
+                    <h5>
+                        <h5><a href="{% url 'items' 'solutions' %}">Food-waste Solution</a></h5>
+                        <p>We need to solve food waste problem with proper and effective solution.</p>
+                </div>
+                <div class="card card4">
+                    {% url 'calculator' as calculator_url %}
+                    <img class="image" src="{% static 'users/images/calculator.png'%}" />
+                    <h5><a href="{% url 'calculator' %}">Food Calculator</a></h5>
+                    <p>With proper use of food calculation we can solve many wastage.</p>
+                </div>
+
+            </div>
+        </div>
+        </div>
+
