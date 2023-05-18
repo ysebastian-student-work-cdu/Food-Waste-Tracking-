@@ -10,4 +10,5 @@ urlpatterns = [
     path('analyze', views.calculator, name='calculator_analyzed'),
     path('items/<id>', views.detail, name='items'),
     path('<invalid>', views.invalid, name='invalid'),
+    path('wastelist', views.wastelist, name='wastelist'),
 ]

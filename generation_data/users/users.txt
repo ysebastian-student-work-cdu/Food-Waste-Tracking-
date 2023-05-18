@@ -1,0 +1,14 @@
+Generate a csv of 300 users, with the following columns:
+
+- userID: sequential number of records (primary key)
+- signupDate: the date this user signed up. Keep the dates in chronological order, between 17-Apr-21 and 6-May-23.
+- user: generate a random username for this user
+- pass: generate a random password for this user
+- name: generate a realistic name for this user
+- location: pick a major city from any country
+
+The signupDate can have some variation in it, as some signupDates may have several users sign-up, and other days no users sign-up. Allow for up to 10 new users per day at the start date, and the frequency of new users steadily declines. Keep the trend loosely, but introduce some randomness to it. I want to see some gaps in the dates, and some days with lots of new users.
+
+For the password, keep the passwords alphanumeric and limited to 8 characters. They don't need to be secure.
+
+Don't generate a python script, just create the data and the csv yourself.
