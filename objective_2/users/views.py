@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import items
+from django.contrib.auth import authenticate, login, logout
 from .info import Info
 '''from .models import WasteCollection'''
 
@@ -90,6 +91,27 @@ def wastelist(request):
     wastelist= WasteCollection.objects.all()
 
     return render(request, 'users/wastelist.html', {'wastelist': wastelist})
+
+def Login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            context = {"error": "Invalid username or password!"}
+            return render(request, 'accounts/login.html',context)
+        login(request,user)
+        return redirect('/signup/')
+    return render(request, 'accounts/login.html',{})    
+
+def Logout(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('/login/')
+    return render(request, 'accounts/logout.html',{})
+
+def Signup(request):
+    return render(request, 'accounts/signup.html',{})
 
 
 
