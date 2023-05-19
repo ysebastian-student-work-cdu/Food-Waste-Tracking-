@@ -14,6 +14,6 @@ urlpatterns = [
     path('wastelist', views.wastelist, name='wastelist'),
     path('accounts/', include("django.contrib.auth.urls")),
     path('signup/', views.Signup, name='signup'),
-    path('login/', views.Login),
-    path('logout/', views.Logout),
+    path('login/', views.Login, name='login'),
+    path('logout/', views.Logout,name='logout'),
 ]
