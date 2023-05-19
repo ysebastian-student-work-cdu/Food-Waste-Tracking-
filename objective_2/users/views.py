@@ -102,16 +102,16 @@ def Login(request):
             return render(request, 'accounts/login.html',context)
         login(request,user)
         return redirect('/signup/')
-    return render(request, 'accounts/login.html',{})    
+    return render(request, 'users/login.html',{})    
 
 def Logout(request):
     if request.method == 'POST':
         logout(request)
         return redirect('/login/')
-    return render(request, 'accounts/logout.html',{})
+    return render(request, 'users/logout.html',{})
 
 def Signup(request):
-    return render(request, 'accounts/signup.html',{})
+    return render(request, 'users/signup.html',{})
 
 
 
