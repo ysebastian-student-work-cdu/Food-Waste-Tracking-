@@ -1,3 +1,6 @@
+{% extends "users/__base.html" %}
+{% load static %}
+{% load index %}
 
 {% if not request.user.is_authenticated %}
 {% block content %}
