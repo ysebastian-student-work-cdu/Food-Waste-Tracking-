@@ -1,5 +1,8 @@
+{% extends "users/__base.html" %}
+{% load static %}
 {% load index %}
-{% block title %}Register{% endblock%}
+
+{% block title %}Sign Up{% endblock%}
 {% block content %}
 {% if user.is.authenticated %}
 HI {{ user.user.name}}!
