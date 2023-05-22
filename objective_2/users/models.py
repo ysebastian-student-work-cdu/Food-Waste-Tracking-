@@ -1,4 +1,6 @@
 '''from django.db import models
+from django.utils import timezone
+
 
 class organisation(models.Model):
     name= models.CharField('Organisation Name', max_length=90)
@@ -16,6 +18,7 @@ class Users(models.Model):
     last_name= models.CharField('Last Name', max_length=90)
     id= models.CharField('User ID', max_length=30)
     password= models.CharField('Password', max_length=90)
+    signup_date = models.DateTimeField(default=timezone.now)
     location = models.CharField('Location', max_length=120)
     email_address = models.EmailField('Email', max_length=90)
     
