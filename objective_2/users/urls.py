@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from audit.views import views
+#from audit.views import views
 # from accounts import views
 
 
@@ -18,7 +18,7 @@ urlpatterns = [
     path('login/', views.Login, name='login'),
     path('logout/', views.Logout, name='logout'),
     path('welcome/', views.welcome, name='welcome'),
-    path('audit/', views.audit, name='audit'),
+   # path('audit/', views.audit, name='audit'),
     # path('donation/', views.donation, name='donation'),
 ]
 

@@ -63,7 +63,7 @@ nav {
 
 h1 {
     color: rgb(231, 221, 240);
-    font-size: 70px;
+    font-size: 60px;
 }
 
 p {
@@ -110,7 +110,7 @@ h5 {
 }
 
 .card p {
-    font-size: 8px;
+    font-size: 10px;
     color: rgb(104, 60, 60);
 }
 
@@ -125,5 +125,5 @@ h5 {
 
 .detail {
     font-color: white;
-    font-size: 5em;
+    font-size: 23px;
 }
