@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from . import items
 from django.contrib.auth import authenticate, login, logout
 from .info import Info
-'''from .models import WasteCollection, User'''
+'''from .models import WasteCollection, User'
 
 def index(request):
     return render(request, 'users/index.html')
