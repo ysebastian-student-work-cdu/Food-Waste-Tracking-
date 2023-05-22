@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from . import items
 from django.contrib.auth import authenticate, login, logout
 from .info import Info
-'''from .models import WasteCollection'''
+'''from .models import WasteCollection, User'''
 
 def index(request):
     return render(request, 'users/index.html')
@@ -112,6 +112,15 @@ def Logout(request):
 
 def Signup(request):
     return render(request, 'users/signup.html',{})
+
+def welcome(request):
+    users = User.object.all()
+    
+    context = {
+        'users': users,
+    }
+
+    return render(request, 'welcome.html', context)
 
 
 
