@@ -19,5 +19,6 @@ urlpatterns = [
     path('logout/', views.Logout, name='logout'),
     path('welcome/', views.welcome, name='welcome'),
     path('audit/', views.audit, name='audit'),
+    # path('donation/', views.donation, name='donation'),
 ]
 
