@@ -13,7 +13,7 @@ class organisation(models.Model):
     
    
    
-class Users(models.Model):
+class User(models.Model):
     first_name= models.CharField('First Name', max_length=90)
     last_name= models.CharField('Last Name', max_length=90)
     id= models.CharField('User ID', max_length=30)
