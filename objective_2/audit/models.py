@@ -6,6 +6,10 @@ class UserRoles(models.Model):
     roleID = models.IntegerField(primary_key=True)
     roleName = models.CharField(max_length=32)
 
+    # Override the default pluralisation of table names in the admin console
+    class Meta:
+        verbose_name_plural = "UserRoles"  # Specify the plural name
+
     def __str__(self):
         return self.roleName
 
@@ -28,12 +32,14 @@ class Users(models.Model):
     location = models.CharField(max_length=50)
     email = models.EmailField()
 
+    # Override the default pluralisation of table names in the admin console
+    class Meta:
+        verbose_name_plural = "Users"  # Specify the plural name
+
     def __str__(self):
         return self.username
 
 
-
-        
 class organisation(models.Model):
     id = models.AutoField(primary_key=True)    
     f_name= models.CharField('Organisation Name', max_length=90)

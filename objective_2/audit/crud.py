@@ -1,4 +1,4 @@
-from users.models import UserRoles, Users
+from audit.models import UserRoles, Users
 
 def create_user(role_id, username, password, nickname, location, email):
 

@@ -1,6 +1,6 @@
 [
     {
-        "model": "users.UserRoles",
+        "model": "audit.UserRoles",
         "pk": 1,
         "fields": {
             "roleID": 1,
@@ -8,7 +8,7 @@
         }
     },
     {
-        "model": "users.UserRoles",
+        "model": "audit.UserRoles",
         "pk": 2,
         "fields": {
             "roleID": 2,
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "users.UserRoles",
+        "model": "audit.UserRoles",
         "pk": 3,
         "fields": {
             "roleID": 3,
