@@ -1,4 +1,6 @@
 from django.urls import path, include
+from django.contrib import admin
+
 from . import views
 #from audit.views import views
 # from accounts import views
@@ -20,5 +22,6 @@ urlpatterns = [
     path('welcome/', views.welcome, name='welcome'),
    # path('audit/', views.audit, name='audit'),
     # path('donation/', views.donation, name='donation'),
+    path('admin/', admin.site.urls),
 ]
 
