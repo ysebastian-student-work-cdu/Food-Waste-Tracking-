@@ -1,0 +1,26 @@
+[
+    {
+        "model": "users.UserRoles",
+        "pk": 1,
+        "fields": {
+            "roleID": 1,
+            "roleName": "User"
+        }
+    },
+    {
+        "model": "users.UserRoles",
+        "pk": 2,
+        "fields": {
+            "roleID": 2,
+            "roleName": "Administrator"
+        }
+    },
+    {
+        "model": "users.UserRoles",
+        "pk": 3,
+        "fields": {
+            "roleID": 3,
+            "roleName": "Technician"
+        }
+    }
+]
