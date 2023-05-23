@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render
+from .models import *
+from .forms import *
 
 # Create your views here.
+app_name = 'audit/'
 
 def index(request):
 	return 0;
@@ -41,6 +44,7 @@ def user_delete(request):
 def log_create(request):
 	return 0
 
+
 '''
 Displays all entries into food audit table by specific user
 '''
@@ -51,7 +55,11 @@ def log_read(request):
 	Adds a new donation by user to a food waste org to donation table
 '''
 def donate_create(request):
-	return 0
+
+    page_data = {'myform': DonationForm(), }
+
+    return render(request, app_name + 'donate_create.html', page_data)
+	
 
 '''
 Displays all donations made by user
