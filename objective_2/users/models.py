@@ -1,3 +1,39 @@
+from django.db import models
+from django.core.validators import MinLengthValidator
+
+class UserRoles(models.Model):
+    roleID = models.IntegerField(primary_key=True)
+    roleName = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.roleName
+
+class Users(models.Model):
+    userID = models.AutoField(primary_key=True)
+    roleID = models.ForeignKey(
+        UserRoles,
+        on_delete=models.CASCADE,
+        db_column='roleID'
+    )
+    username = models.CharField(
+        max_length=32,
+        validators=[MinLengthValidator(5)]
+    )
+    password = models.CharField(
+        max_length=64,
+        validators=[MinLengthValidator(8)]
+    )
+    nickname = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.username
+
+
+
+
+
 '''from django.db import models
 from django.utils import timezone
 
