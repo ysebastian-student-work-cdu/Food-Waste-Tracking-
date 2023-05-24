@@ -17,3 +17,4 @@ def table_list(request):
         response += f"<p>{table}</p>"
 
     return HttpResponse(response)
+
