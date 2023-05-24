@@ -1,21 +1,20 @@
 from django.db import models
-from django.core.validators import MinLengthValidator
-
+from django.core.validators import MinLengthValidator, MinValueValidator
+from django.utils.html import format_html
 
 class UserRoles(models.Model):
     roleID = models.IntegerField(primary_key=True)
     roleName = models.CharField(max_length=32)
+
+    class Meta:
+        verbose_name_plural = "User Roles"
 
     def __str__(self):
         return self.roleName
 
 class Users(models.Model):
     userID = models.AutoField(primary_key=True)
-    roleID = models.ForeignKey(
-        UserRoles,
-        on_delete=models.CASCADE,
-        db_column='roleID'
-    )
+    roleID = models.ForeignKey(UserRoles, on_delete=models.CASCADE)
     username = models.CharField(
         max_length=32,
         validators=[MinLengthValidator(5)]
@@ -28,12 +27,42 @@ class Users(models.Model):
     location = models.CharField(max_length=50)
     email = models.EmailField()
 
+    class Meta:
+        verbose_name_plural = "Users"
+
     def __str__(self):
-        return self.username
+        return str(self.username)
+
+class WasteEntries(models.Model):
+    wasteEntryID = models.AutoField(primary_key=True)
+    userID = models.ForeignKey(
+        Users,
+        on_delete=models.CASCADE,
+        db_column='userID'
+    )
+    date = models.DateField()
+
+    class Meta:
+        verbose_name_plural = "Waste Entries"
+
+    def __str__(self):
+        return f"{self.userID.username} ({self.date})"
+
+class WasteItems(models.Model):
+    wasteItemID = models.AutoField(primary_key=True)
+    wasteEntryID = models.ForeignKey(WasteEntries, on_delete=models.CASCADE)
+    itemDescription = models.CharField(max_length=64)
+    quantity = models.FloatField(
+        validators=[MinValueValidator(0)]
+    )
+
+    class Meta:
+        verbose_name_plural = "Waste Items"
+
+    def __str__(self):
+        return f"{self.itemDescription}, {self.wasteEntryID.userID.username} ({self.wasteEntryID.date})"
 
 
-
-        
 class organisation(models.Model):
     id = models.AutoField(primary_key=True)    
     f_name= models.CharField('Organisation Name', max_length=90)

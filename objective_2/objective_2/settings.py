@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'audit',
     'users',
-    
-    
+    'admin_console',
 ]
 
 MIDDLEWARE = [
@@ -132,4 +131,5 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL="/signup/"
+LOGIN_REDIRECT_URL='signup'
+LOGOUT_REDIRECT_URL='login'
