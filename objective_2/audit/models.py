@@ -63,7 +63,7 @@ class WasteItems(models.Model):
         return f"{self.itemDescription}, {self.wasteEntryID.userID.username} ({self.wasteEntryID.date})"
 
 
-class organisation(models.Model):
+class Organisation(models.Model):
     id = models.AutoField(primary_key=True)    
     f_name= models.CharField('Organisation Name', max_length=90)
     l_name= models.CharField('Organisation Name', max_length=90)
