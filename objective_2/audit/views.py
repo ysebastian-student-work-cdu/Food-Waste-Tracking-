@@ -19,6 +19,15 @@ def user_create(request):
 	return 0
 	
 '''
+Authenticates the user. If authentication is true redirects them to user homepage.
+'''
+def user_login(request):
+
+	# make sure to save user's id to session.       request.session['id'] = usersid
+
+	
+
+'''
 Updates a user's password in the user table
 '''
 def user_update(request):
@@ -59,7 +68,18 @@ def donate_create(request):
     page_data = {'myform': DonationForm(), }
 
     return render(request, app_name + 'donate_create.html', page_data)
+
+def donate_submit(request):
 	
+	# Add userID as default value before saving request.
+	# id = request.session['id']
+	# form = DonationForm(request.POST)
+``  # form(initial_value{'userID','request.session['id']})
+	# Check if valid
+	# save to db
+	
+def delete(request):
+	delete_user(request.session['id']= )
 
 '''
 Displays all donations made by user

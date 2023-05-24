@@ -1,8 +1,10 @@
 ﻿from django import forms
 from .models import *
 
+
 # Django's ModelForm♦
 class DonationForm(forms.ModelForm):
+    # model attributes (userID, orgID, amount)
     class Meta:
         model = Donate
         # The fields to be included in the form
