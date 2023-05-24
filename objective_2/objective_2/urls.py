@@ -19,5 +19,5 @@ urlpatterns = [
     path('admin/', include('admin.urls')),
     path('', include('users.urls')),
     path('audit/', include('audit.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),   #for login
+    path('accounts/', include('audit.urls')),
 ]

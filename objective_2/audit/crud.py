@@ -23,10 +23,6 @@ def read_user(id):
         raise Exception('User does not exist.')
     return user
 
-def update_user(id, key, value):
-    user = read_user(id)
-    user.update(key=value)
-
 def delete_user(id):
     user = read_user(id)
     user.delete()

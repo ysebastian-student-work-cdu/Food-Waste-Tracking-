@@ -4,13 +4,10 @@ from django.shortcuts import render
 from .models import *
 from .forms import *
 
-# Create your views here.
-app_name = 'audit/'
+# Create your views here
 
 def index(request):
-	return 0;
-
-
+	return render(request, 'audit/index.html')
 
 '''
 Adds a new user to the user table
@@ -66,7 +63,3 @@ Displays all donations made by user
 '''
 def donate_read(request):
 	return 0
-
-
-
-
