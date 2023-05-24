@@ -22,6 +22,6 @@
 </form>
 </div>
 {% else %}
-<p>You're already logged in. Would you like to <a href='/logout/'>logout</a>?</p>
+<p>You're already logged in. Would you like to <a href='{% url 'logout' %}'>logout</a>?</p>
 {% endif %}
 {% endblock %}
