@@ -6,5 +6,5 @@ from .forms import *
 
 # Create your views here
 
-def index(request):
-	return render(request, 'audit/index.html')
+def accounts(request):
+	return render(request, 'audit/accounts.html')
