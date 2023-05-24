@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waste Items</title>
+</head>
+<body>
+    <h1>Waste Items for Entry #: {{ waste_entry_id }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for waste_item in waste_items %}
+            <tr>
+                <td>{{ waste_item.itemDescription }}</td>
+                <td>{{ waste_item.quantity }}</td>
+                <!-- Add more table cells for other fields -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

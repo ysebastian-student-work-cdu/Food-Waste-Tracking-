@@ -1,4 +1,4 @@
-from audit.models import UserRoles, Users
+from audit.models import UserRoles, Users, WasteItems
 
 def create_user(role_id, username, password, nickname, location, email):
     try:
@@ -27,3 +27,8 @@ def delete_user(id):
     user = read_user(id)
     user.delete()
     return True
+
+# Waste Items 
+
+def get_waste_items_by_entry_id (id):
+    return WasteItems.objects.filter(wasteEntryID=id)
