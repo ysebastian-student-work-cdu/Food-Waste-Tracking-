@@ -3,6 +3,7 @@ from .crud import create_user
 from audit.models import UserRoles, Users
 
 class CreateUserTestCase(TestCase):
+    # This class inherently tests the create and read functions.
     
     def test_create_user(self):
         role = UserRoles.objects.create(roleID=99, roleName='TestRole')
