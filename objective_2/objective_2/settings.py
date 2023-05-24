@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'audit',
     'users',
+    'admin_console',
 ]
 
 MIDDLEWARE = [
