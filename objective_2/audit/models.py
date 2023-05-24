@@ -46,7 +46,7 @@ class WasteEntries(models.Model):
         verbose_name_plural = "Waste Entries"
 
     def __str__(self):
-        return f"{self.userID.username} ({self.date})"
+        return f"{self.wasteEntryID}. {self.userID.username} ({self.date})"
 
 class WasteItems(models.Model):
     wasteItemID = models.AutoField(primary_key=True)
