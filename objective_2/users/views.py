@@ -92,7 +92,7 @@ def wastelist(request):
 
     return render(request, 'users/wastelist.html', {'wastelist': wastelist})
 
-def Login(request):
+def LoginView(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -104,7 +104,7 @@ def Login(request):
         return redirect('/signup/')
     return render(request, 'users/login.html',{})    
 
-def Logout(request):
+def LogoutView(request):
     if request.method == 'POST':
         logout(request)
         return redirect('/login/')
