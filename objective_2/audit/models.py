@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.utils.html import format_html
@@ -82,7 +83,15 @@ class Donate(models.Model):
      def __str__(self):
         return self.name
 
-
+# For getting the recipies from the waste produce 
+class Recipies(forms.Model):
+    ItemDesc1=forms.foreignKey(WasteItems, on_delete=models.CASCADE)
+    ItemDesc2=forms.foreignKey(WasteItems, on_delete=models.CASCADE)
+    ItemDesc3=forms.foreignKey(WasteItems, on_delete=models.CASCADE)
+    Quantity=forms.IntegerField(max_value=10)
+    
+    
+    
 
 
         
