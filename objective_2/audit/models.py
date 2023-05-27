@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.utils.html import format_html
@@ -82,7 +83,21 @@ class Donate(models.Model):
      def __str__(self):
         return self.name
 
-
+# For getting the recipies from the waste produce 
+class FoodForm(models.Model):
+    nameofItem1 = models.CharField(max_length=100)
+    quantity1 = models.IntegerField()
+    nameofItem2 = models.CharField(max_length=100)
+    quantity2 = models.IntegerField()
+    nameofItem3 = models.CharField(max_length=100)
+    quantity3 = models.IntegerField()
+    
+    def  __str__(self) -> str:
+        return self.nameofItem1
+    
+    
+    
+    
 
 
         
