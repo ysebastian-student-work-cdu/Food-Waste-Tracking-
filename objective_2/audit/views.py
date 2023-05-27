@@ -3,6 +3,7 @@ from django.template import loader
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from .recipe import *
 
 from . import utils
 
@@ -78,13 +79,28 @@ def waste_items_view(request, waste_entry_id):
 
     
 def add_food(request):
-    page_data={'myForm':recipe(),}
+    page_data={'myForm':recipeForm(),}
     return render(request, 'audit/Recipes.html',page_data)
 
 def savefood(request):
-    form =recipe(request.POST)
-    if form.is_valid():
+	if request.method == 'POST':
+		form =recipeForm(request.POST)
+		if form.is_valid():
+			form.save()
+		saved_data=FoodForm.objects.all()
+		item1=saved_data[1].nameofItem1
+		item2=saved_data[1].nameofItem2
+		item3=saved_data[1].nameofItem3
+		recipe=Recipe.generate_recipe(item1,item2,item3)
+		recipe.save()
+	return render(request, 'audit/recipefoodsave.html',{'Recipes':recipe})
         
-        form.save()
-        return render(request, 'audit/recipefoodsave.html')
-    
+        
+# def recipe(request):
+# 	# Code TO GET THE SAVED DATA FROM THE DATABASE AND USE the 3 items to generate a recipe
+# 	data=FoodForm.objects.all()
+# 	item1=data[0].item1
+# 	item2=data[0].item2
+# 	item3=data[0].item3
+# 	recipe=Recipe.generate_recipe(item1,item2,item3)
+# 	return render(request, 'audit/NewRecipes.html',)
