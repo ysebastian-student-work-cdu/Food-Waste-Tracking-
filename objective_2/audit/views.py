@@ -6,6 +6,7 @@ from .forms import *
 
 from . import utils
 
+app_name = 'audit/'
 # Create your views here
 
 def index(request):
@@ -55,11 +56,29 @@ def log_read(request):
 '''
 	Adds a new donation by user to a food waste org to donation table
 '''
-def donate_create(request):
+def donate(request):
 
-    page_data = {'myform': DonationForm(), }
+    page_data = {'myform': DonationForm(), 'action': '/submit_donation' }
 
     return render(request, app_name + 'donate_create.html', page_data)
+
+def submit_donation(request):
+	# Add userID as default value before saving request.
+	# id = request.session['id']
+	# form = DonationForm(request.POST)
+    # form(initial_value{'userID','request.session['id']})
+	# Check if valid
+	# save to db
+	try:
+		form = DonationForm(request['POST'])
+		form(initial={'userID',"request.session['id']"})
+	except(Exception):
+		return 0
+	if form.is_valid():
+		form.save()
+	else:
+		return (request, my_app+'donate_create.html')
+
 	
 
 '''
