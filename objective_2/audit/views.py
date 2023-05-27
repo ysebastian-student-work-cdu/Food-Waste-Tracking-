@@ -74,3 +74,17 @@ def accounts(request):
 def waste_items_view(request, waste_entry_id):
     waste_items = utils.get_waste_items_by_entry_id(waste_entry_id)
     return render(request, 'audit/waste_items.html', {'waste_items': waste_items, 'waste_entry_id': waste_entry_id})
+
+
+    
+def add_food(request):
+    page_data={'myForm':recipe(),}
+    return render(request, 'audit/Recipes.html',page_data)
+
+def savefood(request):
+    form =recipe(request.POST)
+    if form.is_valid():
+        
+        form.save()
+        return render(request, 'audit/recipefoodsave.html')
+    

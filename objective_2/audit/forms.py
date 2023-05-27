@@ -19,3 +19,7 @@ class DonationForm(forms.ModelForm):
         #    'address': 'Postal Address',
         #    'state_province': 'State or Province'
         #}
+class recipe(forms.ModelForm):
+    class Meta:
+        model = FoodForm
+        fields = ('nameofItem1','quantity1','nameofItem2','quantity2','nameofItem3','quantity3')

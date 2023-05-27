@@ -84,11 +84,17 @@ class Donate(models.Model):
         return self.name
 
 # For getting the recipies from the waste produce 
-class Recipies(forms.Model):
-    ItemDesc1=forms.foreignKey(WasteItems, on_delete=models.CASCADE)
-    ItemDesc2=forms.foreignKey(WasteItems, on_delete=models.CASCADE)
-    ItemDesc3=forms.foreignKey(WasteItems, on_delete=models.CASCADE)
-    Quantity=forms.IntegerField(max_value=10)
+class FoodForm(models.Model):
+    nameofItem1 = models.CharField(max_length=100)
+    quantity1 = models.IntegerField()
+    nameofItem2 = models.CharField(max_length=100)
+    quantity2 = models.IntegerField()
+    nameofItem3 = models.CharField(max_length=100)
+    quantity3 = models.IntegerField()
+    
+    def  __str__(self) -> str:
+        return self.nameofItem1
+    
     
     
     
