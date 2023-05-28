@@ -1,7 +1,12 @@
 from django.urls import path
 from . import views
 
+app_name = 'audit'
+
 urlpatterns = [
+    path('entries/', views.waste_entries, name='entries'),
+    path('create/', views.create_waste_entry, name='create'),
+
     path('waste-items/<int:waste_entry_id>/', views.waste_items_view, name='waste_items'),
     path('donate', views.donate, name='donate'),
     path('submit_donation', views.submit_donation, name = 'submit_donation'),

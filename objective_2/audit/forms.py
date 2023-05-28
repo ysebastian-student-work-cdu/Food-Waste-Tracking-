@@ -29,3 +29,13 @@ class recipeForm(forms.ModelForm):
     class Meta:
         model = FoodForm
         fields = ('nameofItem1','quantity1','nameofItem2','quantity2','nameofItem3','quantity3')
+
+
+class CreateWasteEntry(forms.ModelForm):
+    class Meta:
+        model = WasteEntries
+        fields = ['userID', 'date']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['date'].widget = forms.DateInput(attrs={'type': 'date'})

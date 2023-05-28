@@ -1,14 +1,32 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from .recipe import *
+
+from .forms import CreateWasteEntry
 
 from . import utils
 
 app_name = 'audit/'
 # Create your views here
+
+def waste_entries(request):
+    entries = WasteEntries.objects.all()
+    return render(request, 'audit/waste_entries.html', {'entries': entries})
+
+def create_waste_entry(request):
+    if request.method == 'POST':
+        form = CreateWasteEntry(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('audit:entries')  # Replace 'blog:posts' with your desired redirect URL
+    else:
+        form = CreateWasteEntry()
+    
+    return render(request, 'audit/create_waste_entry.html', {'form': form})
+
 
 def index(request):
 	return 0;
