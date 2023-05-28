@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .crud import create_user
+from .utils import create_user
 from audit.models import UserRoles, Users
 
 class CreateUserTestCase(TestCase):
