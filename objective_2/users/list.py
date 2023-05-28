@@ -24,3 +24,13 @@ def data_model(request):
 def resources(request):
     return render(request, 'users/resources.html')
 
+def login(request):
+    return render(request, 'users/login.html')
+
+def logout(request):
+    return render(request, 'users/logout.html')
+
+def wastelist(request):
+    return render(request, 'users/wastelist.html')
+
+
