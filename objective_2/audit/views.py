@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.core import serializers
 from .models import *
 from .forms import *
 from .recipe import *
@@ -101,8 +102,8 @@ def log_read(request):
 	Adds a new donation by user to a food waste org to donation table
 '''
 def donate(request):
-	request.session['id'] = '443'
-	form = DonationForm(initial={'userID':f"{request.session['id']}"})
+	request.session['id'] = 1;
+	form = DonationForm(initial={'userID':Users.objects.get(userID = request.session['id']).userID})
 	page_data = {'myform': form, 'action': '/submit_donation'}
 
 	return render(request, app_name + 'donate_create.html', page_data)

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\objective_2",
+    "\\objective_2\\audit"
   ],
-  "SelectedNode": "\\C:\\Users\\hanna\\Source\\Repos\\HIT237_S123_Group_2",
+  "SelectedNode": "\\objective_2\\db.sqlite3",
   "PreviewInSolutionExplorer": false
 }

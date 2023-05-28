@@ -66,8 +66,6 @@ class WasteItems(models.Model):
 
 class Organisation(models.Model):
     id = models.AutoField(primary_key=True)    
-    f_name= models.CharField('Organisation Name', max_length=90)
-    l_name= models.CharField('Organisation Name', max_length=90)
     description= models.TextField(blank=True)
     type= models.CharField('Organisation Type', max_length=90)
     
@@ -76,12 +74,12 @@ class Organisation(models.Model):
         return self.name
 
 class Donate(models.Model):
-     userID= models.CharField(max_length = 10)    # foreign key of userID in user table
+     userID= models.ForeignKey(Users, on_delete =models.CASCADE, db_column = 'userID')    # foreign key of userID in user table
      orgID= models.CharField('Organisation Name', max_length=90) # Foreigh  key of organisation id field
      amount = models.DecimalField(max_digits=7, decimal_places=2) # Amount donated by the user (max is $9999999 for one donation)
      
      def __str__(self):
-        return self.name
+        return str(self.userID.userID)
 
 # For getting the recipies from the waste produce 
 class FoodForm(models.Model):

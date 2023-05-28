@@ -11,20 +11,9 @@ class DonationForm(forms.ModelForm):
         # The fields to be included in the form
       
         fields = ('userID','orgID', 'amount')
-       # widgets = {'userID':forms.HiddenInput()}
+        #widgets = {'userID':forms.HiddenInput()}
         
-        
-    
 
-        # The exclude statement can replace fields. Every field will be displayed except those,
-        # defined in exclude
-        # exclude = []
-
-        # Updates the names of the labels in the form on the webpage
-        #labels = {
-        #    'address': 'Postal Address',
-        #    'state_province': 'State or Province'
-        #}
 class recipeForm(forms.ModelForm):
     class Meta:
         model = FoodForm
