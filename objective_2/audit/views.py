@@ -95,7 +95,6 @@ def waste_items_view(request, waste_entry_id):
     waste_items = utils.get_waste_items_by_entry_id(waste_entry_id)
     return render(request, 'audit/waste_items.html', {'waste_items': waste_items, 'waste_entry_id': waste_entry_id})
 
-
     
 def add_food(request):
     page_data={'myForm':recipeForm(),}
@@ -114,12 +113,3 @@ def savefood(request):
 		
 	return render(request, 'audit/recipefoodsave.html',{'Recipes':recipe})
         
-        
-# def recipe(request):
-# 	# Code TO GET THE SAVED DATA FROM THE DATABASE AND USE the 3 items to generate a recipe
-# 	data=FoodForm.objects.all()
-# 	item1=data[0].item1
-# 	item2=data[0].item2
-# 	item3=data[0].item3
-# 	recipe=Recipe.generate_recipe(item1,item2,item3)
-# 	return render(request, 'audit/NewRecipes.html',)
