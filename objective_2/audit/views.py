@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from .models import *
 from .forms import *
 from .recipe import *
@@ -32,6 +33,11 @@ def create_waste_entry(request):
     
     return render(request, 'audit/create_waste_entry.html', {'form': form})
 
+def delete_waste_entry(request, waste_entry_id):
+    waste_entry = get_object_or_404(WasteEntries, pk=waste_entry_id)
+    waste_entry.delete()
+    return redirect('audit:entries')
+
 def create_waste_item(request, waste_entry_id):
     waste_entry = get_object_or_404(WasteEntries, pk=waste_entry_id)
 
@@ -47,6 +53,10 @@ def create_waste_item(request, waste_entry_id):
 
     return render(request, 'audit/add_waste_item.html', {'form': form, 'waste_entry': waste_entry})
 
+def delete_waste_item(request, waste_item_id):
+    waste_item = get_object_or_404(WasteItems, pk=waste_item_id)
+    waste_item.delete()
+    return redirect('audit:entries')
 
 '''
 Adds a new user to the user table

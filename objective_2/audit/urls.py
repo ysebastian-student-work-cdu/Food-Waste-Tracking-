@@ -4,9 +4,12 @@ from . import views
 app_name = 'audit'
 
 urlpatterns = [
-    path('entries/', views.waste_entries, name='entries'),
     path('create/', views.create_waste_entry, name='create'),
+    path('entries/<int:waste_entry_id>/delete/', views.delete_waste_entry, name='delete_entry'),
+    path('entries/', views.waste_entries, name='entries'),
+
     path('items/<int:waste_entry_id>/create/', views.create_waste_item, name='create_item'),
+    path('items/<int:waste_item_id>/delete/', views.delete_waste_item, name='delete_item'),
     path('items/<int:waste_entry_id>/', views.waste_items, name='items'),
     
     path('donate', views.donate, name='donate'),

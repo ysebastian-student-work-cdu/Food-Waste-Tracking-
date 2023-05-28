@@ -14,7 +14,7 @@
     <h2>Waste Items</h2>
     <ul>
         {% for item in waste_items %}
-            <li>{{ item.itemDescription }}, Quantity: {{ item.quantity }}</li>
+            <li> Item: {{ item.itemDescription }}, Quantity: {{ item.quantity }} <a href="{% url 'audit:delete_item' item.wasteItemID %}">Delete</a></li>
         {% empty %}
             <li>No waste items found.</li>
         {% endfor %}

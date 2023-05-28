@@ -11,6 +11,7 @@
         <p>{{ entry.wasteEntryID }}</p>
         <p>{{ entry.date }}</p>
         <a href="{% url 'audit:items' entry.wasteEntryID %}">View Waste Items</a>
+        <a href="{% url 'audit:delete_entry' entry.wasteEntryID %}">Delete</a>
         <hr>
     {% endfor %}
 </body>
