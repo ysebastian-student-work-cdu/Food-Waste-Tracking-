@@ -93,7 +93,8 @@ facts = Item_Class(
         <li>Reducing food waste has significant environmental and economic benefits. For example, reducing food waste by 25% globally could feed 870 million people and save 8% of global freshwater resources. (FAO)</li>
 
         <li>Consumers can play an important role in reducing food waste. In the United States, households are responsible for 43% of all food waste, and reducing household food waste could save consumers up to $1,500 annually. (ReFED)</li>
-        </ul>
+         <li>Making recipes from leftover food items.</li>
+	 </ul>
     ''']    
 )
 
