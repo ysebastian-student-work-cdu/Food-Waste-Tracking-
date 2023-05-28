@@ -58,10 +58,11 @@ def log_read(request):
 	Adds a new donation by user to a food waste org to donation table
 '''
 def donate(request):
+	request.session['id'] = '443'
+	form = DonationForm(initial={'userID':f"{request.session['id']}"})
+	page_data = {'myform': form, 'action': '/submit_donation'}
 
-    page_data = {'myform': DonationForm(), 'action': '/submit_donation' }
-
-    return render(request, app_name + 'donate_create.html', page_data)
+	return render(request, app_name + 'donate_create.html', page_data)
 
 def submit_donation(request):
 	# Add userID as default value before saving request.
@@ -70,16 +71,30 @@ def submit_donation(request):
     # form(initial_value{'userID','request.session['id']})
 	# Check if valid
 	# save to db
-	try:
-		form = DonationForm(request['POST'])
-		form(initial={'userID',"request.session['id']"})
-	except(Exception):
-		return 0
-	if form.is_valid():
-		form.save()
+	
+	if request.method == 'POST':
+		
+		
+		form = DonationForm(request.POST)
+		if form.is_valid():
+		#obj = form.save(commit = 'false')
+		#obj.userID = request.session['id']
+		#obj.save();
+			form.save();
+		return HttpResponse('hi')
 	else:
-		return (request, my_app+'donate_create.html')
-
+		return render(request, app_name + 'donate_create.html')
+		'''
+	try:
+		form = DonationForm()
+		#form(initial={'amount',1})
+		form.save()
+	except(Exception):
+		hi =1
+	
+	
+	return render(request, app_name+'donate_create.html')
+	'''
 	
 
 '''

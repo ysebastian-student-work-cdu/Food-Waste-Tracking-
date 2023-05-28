@@ -3,7 +3,7 @@
 
 </head>
 <body>
-    <form action= "a/submit_donation" method="post">
+    <form action= "submit_donation" method="post">
         {% csrf_token %}
         <table>
             {{ myform.as_table }}
