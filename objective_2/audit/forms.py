@@ -4,11 +4,17 @@ from .models import *
 
 # Django's ModelForm♦
 class DonationForm(forms.ModelForm):
+
     # model attributes (userID, orgID, amount)
     class Meta:
         model = Donate
         # The fields to be included in the form
-        fields = ['orgID', 'amount']
+      
+        fields = ('userID','orgID', 'amount')
+       # widgets = {'userID':forms.HiddenInput()}
+        
+        
+    
 
         # The exclude statement can replace fields. Every field will be displayed except those,
         # defined in exclude
