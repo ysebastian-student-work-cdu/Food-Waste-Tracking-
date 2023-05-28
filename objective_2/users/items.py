@@ -182,7 +182,51 @@ benefits = Item_Class(
         <li>Innovation and new business opportunities: Food waste reduction can spur innovation and the development of new technologies and business models, creating new economic opportunities and jobs in the food sector.</li>
     </ul>
     ''']
+)
 
+login = Item_Class(
+    
+    name = 'login',
+    title = 'Users Login Page',
+)
+
+logout = Item_Class(
+    
+    name = 'logout',
+    title = 'Users Logout Page',
+)
+
+wastelist = Item_Class(
+    
+    name = 'wastelist',
+    title = 'Waste list',
     
 )
+
+recipe = Item_Class(
+    
+    name = 'recipe',
+    title = 'Recipes made with spare food items',
+
+)
+
+donation = Item_Class(
+    
+    name = 'donation',
+    title = 'Donation',
+
+)
+
+audit = Item_Class(
+    
+    name = 'audit',
+    title = 'Audit',
+
+)
+
+
+
+
+
+
 
