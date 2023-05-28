@@ -4,25 +4,22 @@
     <title>Waste Items</title>
 </head>
 <body>
-    <h1>Waste Items for Entry #: {{ waste_entry_id }}</h1>
+    <h1>Waste Entry Details</h1>
+    <p>Waste Entry ID: {{ waste_entry.wasteEntryID }}</p>
+    <p>User: {{ waste_entry.userID.username }}</p>
+    <p>Date: {{ waste_entry.date }}</p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Qty</th>
-                <!-- Add more table headers as needed -->
-            </tr>
-        </thead>
-        <tbody>
-            {% for waste_item in waste_items %}
-            <tr>
-                <td>{{ waste_item.itemDescription }}</td>
-                <td>{{ waste_item.quantity }}</td>
-                <!-- Add more table cells for other fields -->
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <a href="{% url 'audit:create_item' waste_entry.wasteEntryID %}">Add Waste Item</a>
+
+    <h2>Waste Items</h2>
+    <ul>
+        {% for item in waste_items %}
+            <li>{{ item.itemDescription }}, Quantity: {{ item.quantity }}</li>
+        {% empty %}
+            <li>No waste items found.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'audit:entries' %}">Back to entries</a>
 </body>
 </html>

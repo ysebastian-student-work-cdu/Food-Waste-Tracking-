@@ -8,8 +8,12 @@
     <a href="{% url 'audit:create' %}">Create Waste Entry</a>
     {% for entry in entries %}
         <h2>{{ entry.userID.username }}</h2>
+        <p>{{ entry.wasteEntryID }}</p>
         <p>{{ entry.date }}</p>
+        <a href="{% url 'audit:items' entry.wasteEntryID %}">View Waste Items</a>
         <hr>
     {% endfor %}
 </body>
 </html>
+
+

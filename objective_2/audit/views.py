@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 from .recipe import *
@@ -16,6 +16,11 @@ def waste_entries(request):
     entries = WasteEntries.objects.all()
     return render(request, 'audit/waste_entries.html', {'entries': entries})
 
+def waste_items(request, waste_entry_id):
+    waste_entry = get_object_or_404(WasteEntries, pk=waste_entry_id)
+    waste_items = WasteItems.objects.filter(wasteEntryID=waste_entry_id)
+    return render(request, 'audit/waste_items.html', {'waste_entry': waste_entry, 'waste_items': waste_items})
+
 def create_waste_entry(request):
     if request.method == 'POST':
         form = CreateWasteEntry(request.POST)
@@ -27,10 +32,20 @@ def create_waste_entry(request):
     
     return render(request, 'audit/create_waste_entry.html', {'form': form})
 
+def create_waste_item(request, waste_entry_id):
+    waste_entry = get_object_or_404(WasteEntries, pk=waste_entry_id)
 
-def index(request):
-	return 0;
+    if request.method == 'POST':
+        form = WasteItemForm(request.POST)
+        if form.is_valid():
+            waste_item = form.save(commit=False)
+            waste_item.wasteEntryID = waste_entry
+            waste_item.save()
+            return redirect('audit:items', waste_entry_id=waste_entry.wasteEntryID)
+    else:
+        form = WasteItemForm()
 
+    return render(request, 'audit/add_waste_item.html', {'form': form, 'waste_entry': waste_entry})
 
 
 '''
