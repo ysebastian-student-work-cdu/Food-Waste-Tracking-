@@ -4,10 +4,9 @@
 </head>
 <body>
     <fieldset disabled="disabled">
-        {% for donation in donations %}
-        <table>
+        {% for donation in donations %} 
+
             {{ donation.as_table }}
-        </table>
         {% endfor %}
     </fieldset>
 </body>

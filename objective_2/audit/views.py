@@ -6,10 +6,9 @@ from django.core import serializers
 from .models import *
 from .forms import *
 from .recipe import *
-
 from .forms import CreateWasteEntry
-
 from . import utils
+from datetime import datetime, timezone
 
 app_name = 'audit/'
 sessionid = 1
@@ -105,7 +104,12 @@ def log_read(request):
 
 def donate(request):
 	request.session['id'] = 1;
-	form = DonationForm(initial={'userID':Users.objects.get(userID = request.session['id']).userID})
+	form = DonationForm(initial=
+        {
+            'userID':Users.objects.get(userID = request.session['id']).userID,
+            'date': datetime.now(timezone.utc)
+        }
+    )
 	page_data = {'myform': form, 'action': '/submit_donation'}
 
 	return render(request, app_name + 'donate_create.html', page_data)
@@ -126,10 +130,12 @@ Displays all donations made by user
 
 def donate_read(request):
     forms = []
+    dates =[]
     donates = Donate.objects.all().filter(userID = 1)
     for model in donates:
         forms.append(DonationForm(instance = model))
-    content = {'donations': forms}    
+        
+    content = { 'donations': forms}    
     return render(request, app_name + 'donate_read.html', content)
 
 def accounts(request):
