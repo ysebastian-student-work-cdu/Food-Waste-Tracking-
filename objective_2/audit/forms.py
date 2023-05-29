@@ -10,8 +10,9 @@ class DonationForm(forms.ModelForm):
         model = Donate
         # The fields to be included in the form
       
-        fields = ('userID','orgID', 'amount')
-        #widgets = {'userID':forms.HiddenInput()}
+        fields = ('userID','orgID', 'amount', 'date')
+        widgets = {'userID':forms.HiddenInput(),
+                    }
         
 
 class recipeForm(forms.ModelForm):

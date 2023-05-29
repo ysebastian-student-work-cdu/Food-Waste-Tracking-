@@ -14,6 +14,7 @@ urlpatterns = [
     
     path('donate', views.donate, name='donate'),
     path('submit_donation', views.submit_donation, name = 'submit_donation'),
+    path('past_donations', views.donate_read, name = 'past_donations'),
     path('', views.accounts, name='accounts'),
     path('add_food/',views.add_food,name='add_food'),
     path('recipefoodsave.html/',views.savefood,name='savefoodss'),

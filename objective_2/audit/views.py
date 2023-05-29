@@ -12,6 +12,7 @@ from .forms import CreateWasteEntry
 from . import utils
 
 app_name = 'audit/'
+sessionid = 1
 # Create your views here
 
 def waste_entries(request):
@@ -101,6 +102,7 @@ def log_read(request):
 '''
 	Adds a new donation by user to a food waste org to donation table
 '''
+
 def donate(request):
 	request.session['id'] = 1;
 	form = DonationForm(initial={'userID':Users.objects.get(userID = request.session['id']).userID})
@@ -108,44 +110,27 @@ def donate(request):
 
 	return render(request, app_name + 'donate_create.html', page_data)
 
-def submit_donation(request):
-	# Add userID as default value before saving request.
-	# id = request.session['id']
-	# form = DonationForm(request.POST)
-    # form(initial_value{'userID','request.session['id']})
-	# Check if valid
-	# save to db
-	
+def submit_donation(request):	
 	if request.method == 'POST':
-		
-		
 		form = DonationForm(request.POST)
 		if form.is_valid():
-		#obj = form.save(commit = 'false')
-		#obj.userID = request.session['id']
-		#obj.save();
 			form.save();
 		return HttpResponse('hi')
 	else:
 		return render(request, app_name + 'donate_create.html')
-		'''
-	try:
-		form = DonationForm()
-		#form(initial={'amount',1})
-		form.save()
-	except(Exception):
-		hi =1
-	
-	
-	return render(request, app_name+'donate_create.html')
-	'''
 	
 
 '''
 Displays all donations made by user
 '''
+
 def donate_read(request):
-	return 0
+    forms = []
+    donates = Donate.objects.all().filter(userID = 1)
+    for model in donates:
+        forms.append(DonationForm(instance = model))
+    content = {'donations': forms}    
+    return render(request, app_name + 'donate_read.html', content)
 
 def accounts(request):
 	return render(request, 'audit/accounts.html')

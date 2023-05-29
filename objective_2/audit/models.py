@@ -65,19 +65,19 @@ class WasteItems(models.Model):
 
 
 class Organisation(models.Model):
-    id = models.AutoField(primary_key=True)    
+    orgid = models.CharField('Organisation', primary_key=True, max_length = 30)    
     description= models.TextField(blank=True)
-    type= models.CharField('Organisation Type', max_length=90)
+    orgtype = models.CharField('Organisation Type', null=True, max_length=90)
     
     
     def __str__(self):
-        return self.name
+        return self.orgid
 
 class Donate(models.Model):
      userID= models.ForeignKey(Users, on_delete =models.CASCADE, db_column = 'userID')    # foreign key of userID in user table
-     orgID= models.CharField('Organisation Name', max_length=90) # Foreigh  key of organisation id field
+     orgID= models.ForeignKey(Organisation, on_delete = models.CASCADE, db_column = 'orgid') # Foreigh  key of organisation id field
      amount = models.DecimalField(max_digits=7, decimal_places=2) # Amount donated by the user (max is $9999999 for one donation)
-     
+     date = models.DateField(auto_now_add = True)
      def __str__(self):
         return str(self.userID.userID)
 

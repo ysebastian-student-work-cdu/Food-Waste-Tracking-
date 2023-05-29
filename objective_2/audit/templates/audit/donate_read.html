@@ -1,0 +1,14 @@
+<html>
+<head>
+
+</head>
+<body>
+    <fieldset disabled="disabled">
+        {% for donation in donations %}
+        <table>
+            {{ donation.as_table }}
+        </table>
+        {% endfor %}
+    </fieldset>
+</body>
+</html>
