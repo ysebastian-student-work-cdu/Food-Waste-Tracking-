@@ -92,6 +92,7 @@ def wastelist(request):
 
     return render(request, 'users/wastelist.html', {'wastelist': wastelist})
 
+
 def LoginView(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -99,7 +100,8 @@ def LoginView(request):
         user = authenticate(request, username=username, password=password)
         if user is None:
             context = {"error": "Invalid username or password!"}
-            return render(request, 'accounts/login.html',context)
+            return render(request, 'users/login.html',context)
+        # send user to hompage
         login(request,user)
         return redirect('/signup/')
     return render(request, 'users/login.html',{})    
