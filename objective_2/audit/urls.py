@@ -1,4 +1,6 @@
 from django.urls import path
+
+from .payment import *
 from . import views
 
 app_name = 'audit'
@@ -18,4 +20,6 @@ urlpatterns = [
     path('', views.accounts, name='accounts'),
     path('add_food/',views.add_food,name='add_food'),
     path('recipefoodsave.html/',views.savefood,name='savefoodss'),
+    path('initiate-payment/', views.initiate_payment, name='initiate_payment'),
+    path('complete-payment/<int:payment_id>/', views.complete_payment, name='complete_payment'),
 ]
