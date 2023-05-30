@@ -3,6 +3,7 @@
 
 </head>
 <body>
+    <a href="{% url 'audit:donate_delete' %}">Go to donation deletion</a>
     {% for donation in donations %}
     <fieldset disabled="disabled">
         {{ donation.as_table }}

@@ -4,6 +4,7 @@
 
 </head>
 <body>
+    <a ="{% url 'donate_delete' %}>Go to donation deletion</a>
     {% for donation in donations %}
     <form action="update" method="post">
         {% csrf_token %}
