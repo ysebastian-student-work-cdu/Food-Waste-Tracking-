@@ -1,10 +1,7 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime, timezone
 from django.http import HttpResponse
-from .forms import CreateWasteEntry
-from django.core import serializers
 from django.template import loader
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from .models import *
 from .forms import *
@@ -62,6 +59,32 @@ def delete_waste_item(request, waste_item_id):
     waste_item.delete()
     return redirect('audit:entries')
 
+
+# Payment
+@csrf_exempt
+def initiate_payment(request):
+    if request.method == 'POST':
+        amount = float(request.POST.get('amount', 0))
+        if amount <= 0:
+            return JsonResponse({'error': 'Invalid amount.'})
+
+        payment = Payment.objects.create(amount=amount)
+        payment.save()
+
+        return HttpResponse("Done")
+    else:
+        return HttpResponse("Not Done")
+
+def complete_payment(request, payment_id):
+    try:
+        payment = Payment.objects.get(pk=payment_id)
+    except Payment.DoesNotExist:
+        return JsonResponse({'error': 'Payment not found.'})
+
+    payment.status = 'completed'
+    payment.save()
+
+    return JsonResponse({'message': 'Payment completed successfully.'})
 '''
 Adds a new user to the user table
 '''
