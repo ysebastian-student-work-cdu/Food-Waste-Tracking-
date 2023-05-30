@@ -101,8 +101,9 @@ def LoginView(request):
         if user is None:
             context = {"error": "Invalid username or password!"}
             return render(request, 'users/login.html',context)
-        # send user to hompage
+        # send user to hompage and add userid to session
         login(request,user)
+        request.session['id'] = 1
         return redirect('/signup/')
     return render(request, 'users/login.html',{})    
 

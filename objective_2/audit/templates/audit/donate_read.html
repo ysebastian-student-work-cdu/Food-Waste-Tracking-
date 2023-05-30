@@ -3,11 +3,10 @@
 
 </head>
 <body>
+    {% for donation in donations %}
     <fieldset disabled="disabled">
-        {% for donation in donations %} 
-
-            {{ donation.as_table }}
-        {% endfor %}
+        {{ donation.as_table }}
     </fieldset>
+    {% endfor %}
 </body>
 </html>

@@ -1,14 +1,17 @@
-from django.http import HttpResponse
-from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime, timezone
+from django.http import HttpResponse
+from .forms import CreateWasteEntry
 from django.core import serializers
+from django.template import loader
+from django.urls import reverse
 from .models import *
 from .forms import *
 from .recipe import *
-from .forms import CreateWasteEntry
 from . import utils
-from datetime import datetime, timezone
+
+
 
 app_name = 'audit/'
 sessionid = 1
@@ -103,27 +106,34 @@ def log_read(request):
 '''
 
 def donate(request):
-	request.session['id'] = 1;
+	request.session['id'] = 3
 	form = DonationForm(initial=
         {
-            'userID':Users.objects.get(userID = request.session['id']).userID,
+            'userID':Users.objects.get(userID = 1),
             'date': datetime.now(timezone.utc)
         }
     )
-	page_data = {'myform': form, 'action': '/submit_donation'}
+	page_data = {'myform': form}
 
 	return render(request, app_name + 'donate_create.html', page_data)
 
-def submit_donation(request):	
-	if request.method == 'POST':
-		form = DonationForm(request.POST)
-		if form.is_valid():
-			form.save();
-		return HttpResponse('hi')
-	else:
-		return render(request, app_name + 'donate_create.html')
-	
-
+def submit_donation(request):
+    redir = HttpResponse("valod")
+    if request.method == 'POST':
+        try:
+            model = Donate.objects.get(id=request.POST.get('id'))   # get correct model instance
+            form = DonationForm(request.POST, instance = model)
+            redir= render(request , app_name+ "donate_update.html")
+            form = DonationForm(request.POST)
+        except ObjectDoesNotExist:
+            form = DonationForm(request.POST)
+            redir= render(request , app_name+ "donate_create.html")
+        if form.is_valid():
+            form.save()
+            return HttpResponse("valod")
+            
+            
+    return render(request, app_name +'donate_update.html')
 '''
 Displays all donations made by user
 '''
@@ -131,12 +141,29 @@ Displays all donations made by user
 def donate_read(request):
     forms = []
     dates =[]
-    donates = Donate.objects.all().filter(userID = 1)
+    donates = Donate.objects.all().filter(userID = request.session['id'])
     for model in donates:
         forms.append(DonationForm(instance = model))
         
     content = { 'donations': forms}    
     return render(request, app_name + 'donate_read.html', content)
+
+'''
+donate_update
+'''
+def donate_update(request):
+    
+    forms = []
+    ids =[]
+    donates = Donate.objects.all().filter(userID=request.session['id'])
+    for model in donates:
+        forms.append(DonationForm(instance = model))
+        ids.append(getattr(model, 'id'))
+    content = { 'donations': forms,
+                'ids': ids}    
+    return render(request, app_name + 'donate_update.html', content)
+
+    
 
 def accounts(request):
 	return render(request, 'audit/accounts.html')

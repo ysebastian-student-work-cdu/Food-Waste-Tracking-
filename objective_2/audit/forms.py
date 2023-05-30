@@ -2,7 +2,7 @@
 from .models import *
 
 
-# Django's ModelForm♦
+# Django's ModelForm
 class DonationForm(forms.ModelForm):
 
     # model attributes (userID, orgID, amount)
@@ -12,7 +12,7 @@ class DonationForm(forms.ModelForm):
       
         fields = ('userID','orgID', 'amount', 'date')
         widgets = {
-                       'userID':forms.HiddenInput(), 
+                       #'userID':forms.HiddenInput(), 
                        'date': forms.TextInput(attrs={'readonly': 'readonly'})
                   }
 
