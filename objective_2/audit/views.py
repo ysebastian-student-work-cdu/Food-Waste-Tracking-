@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime, timezone
 from django.http import HttpResponse
-from .forms import CreateWasteEntry
 from django.core import serializers
+from .forms import CreateWasteEntry
 from django.template import loader
-from django.http import HttpResponse
-from django.template import loader
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from .models import *
 from .forms import *
@@ -18,15 +16,36 @@ from . import utils
 
 
 app_name = 'audit/'
-sessionid = 1
-# Create your views here
-def auditHome(request):
-    return render(request, 'audit/AuditHomePage.html')
 
-def homepage(request):
-    #add user id to session
-    #request.session['id'] = 
-    return render(request, app_name + 'homepage.html')
+# Create your views here
+
+def LoginView(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            context = {"error": "Invalid username or password!"}
+            return render(request, 'users/login.html',context)
+        # send user to homepage and session userid
+        login(request,user)
+        userid = getattr(user, 'id')
+        request.session['id'] = userid
+        homepage = reverse('audit:auditHome')
+        return HttpResponse(str(userid))
+    return render(request, 'users/login.html',{})    
+
+def LogoutView(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('/login/')
+    return render(request, 'users/logout.html',{})
+
+
+
+def auditHome(request):
+    # if session is 0 return user to some view that they need to login
+    return render(request, 'audit/AuditHomePage.html')
 
 def waste_entries(request):
     entries = WasteEntries.objects.all()
@@ -144,7 +163,7 @@ def log_read(request):
 '''
 
 def donate(request):
-    request.session['id'] = 1
+    #request.session['id'] = 1
     if request.method == 'POST':
         form = DonationForm(request.POST)
         if form.is_valid:
