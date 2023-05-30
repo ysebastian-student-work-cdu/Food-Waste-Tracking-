@@ -1,3 +1,130 @@
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+header {
+    color: black;
+    height: 12%;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    height: 76%;
+    background-size: cover;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+footer {
+    height: 12%;
+    color: black;
+}
+
+img {
+    height: 150px;
+    width: 200px;
+    object-fit: cover;
+    transition: background-color 300ms;
+    border-radius: 25px;
+}
+
+.nagivation-images {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nagivation-images article {
+    flex: 1;
+    max-width: 25%;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .nagivation-images article img {
+    max-width: 100%;
+  }
+  
+  .nagivation-images article h5 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .nagivation-images article p {
+    margin-bottom: 0;
+  }
+
+.navigation-links {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+.navigation-links li {
+    flex: 1;
+    text-align: center;
+}
+
+.navigation-links li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+/* Reset default styles */
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  /* Footer container */
+  .footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Heading styles */
+  h4 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+    
+  }
+  
+  /* Paragraph styles */
+  p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  
+  h5 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  /* Student details */
+  p.student-details {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media only screen and (max-width: 600px) {
+    h4, p, h5, p.student-details {
+      font-size: 30px;
+    }
+  }
+  
