@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from . import items
 from django.contrib.auth import authenticate, login, logout
 from .info import Info
@@ -104,7 +104,8 @@ def LoginView(request):
         # send user to hompage and add userid to session
         login(request,user)
         request.session['id'] = 1
-        return redirect('/signup/')
+        homepage = reverse('audit:homepage')
+        return redirect(homepage)
     return render(request, 'users/login.html',{})    
 
 def LogoutView(request):

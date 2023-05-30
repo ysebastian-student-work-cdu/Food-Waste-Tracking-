@@ -21,6 +21,11 @@ app_name = 'audit/'
 sessionid = 1
 # Create your views here
 
+def homepage(request):
+    #add user id to session
+    #request.session['id'] = 
+    return render(request, app_name + 'homepage.html')
+
 def waste_entries(request):
     entries = WasteEntries.objects.all()
     return render(request, 'audit/waste_entries.html', {'entries': entries})

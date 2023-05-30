@@ -5,15 +5,15 @@
 
 {% block content %}
         
-        <div style='margin-top:30px;'>
-            <form action="/signup/?" id="loginform">{% csrf_token %}
-                {% if error %}
-                <p style='color:red'>{{ error }}</p>
-                {% endif %}
-            </div>
+            <form action="" method="post" id="loginform">
+                {% csrf_token %}
+                <div style='margin-top:30px;'>
+                    {% if error %}
+                    <p style='color:red'>{{ error }}</p>
+                    {% endif %}
+                </div>
                 <input type='text' name='username'
                     placeholder='username' />
-                
                     <input type='password' name='password' placeholder='password' />
                     <button type="submit" form="loginform">Log in</button>
                 </div>
