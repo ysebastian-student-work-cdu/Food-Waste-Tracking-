@@ -137,17 +137,18 @@ def log_read(request):
 '''
 
 def donate(request):
+    request.session['id'] = 1
     if request.method == 'POST':
         form = DonationForm(request.POST)
         if form.is_valid:
             form.save()
-   
-
-    request.session['id'] = 1
+    
+    #Donate.objects.all().delete()
+    
     form = DonationForm(initial=
         {
             'userID':Users.objects.get(userID = request.session['id']),
-            'date': '12/05/13'
+            'date': datetime.now(timezone.utc).strftime('%Y/%m/%d')
         }
     )
     page_data = {'myform': form}
