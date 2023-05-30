@@ -20,6 +20,8 @@ from . import utils
 app_name = 'audit/'
 sessionid = 1
 # Create your views here
+def auditHome(request):
+    return render(request, 'audit/AuditHomePage.html')
 
 def homepage(request):
     #add user id to session
@@ -161,7 +163,7 @@ def donate(request):
     return render(request, app_name + 'donate_create.html', page_data)
 
 def submit_donation(request):
-    redir = HttpResponse("valod")
+    redir = HttpResponse("valid")
     form = DonationForm(request.POST)
     if form.is_valid():
         form.save()

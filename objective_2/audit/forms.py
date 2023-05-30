@@ -21,7 +21,7 @@ class DonationsForm(forms.Form):
 
     userID= forms.CharField(widget = forms.HiddenInput(), max_length=30)    # foreign key of userID in user table
     orgID= forms.CharField(max_length=30)# Foreigh  key of organisation id field
-    amount = forms.DecimalField(max_digits=7, decimal_places=2) # Amount donated by the user (max is $9999999 for one donation)
+    amount = forms.IntegerField() # Amount donated by the user (max is $9999999 for one donation)
     date = forms.DateField(widget = forms.HiddenInput())
 
 

@@ -9,6 +9,7 @@ urlpatterns = [
     path('homepage/', views.homepage, name = 'homepage'),
 
     path('create/', views.create_waste_entry, name='create'),
+    path('', views.auditHome, name='auditHome'),
     path('entries/<int:waste_entry_id>/delete/', views.delete_waste_entry, name='delete_entry'),
     path('entries/', views.waste_entries, name='entries'),
 
@@ -23,6 +24,6 @@ urlpatterns = [
     path('', views.accounts, name='accounts'),
     path('add_food/',views.add_food,name='add_food'),
     path('recipefoodsave.html/',views.savefood,name='savefoodss'),
-    #path('initiate-payment/', views.initiate_payment, name='initiate_payment'),
-    #path('complete-payment/<int:payment_id>/', views.complete_payment, name='complete_payment'),
+    path('initiate-payment/', views.initiate_payment, name='initiate_payment'),
+    path('complete-payment/<int:payment_id>/', views.complete_payment, name='complete_payment'),
 ]
