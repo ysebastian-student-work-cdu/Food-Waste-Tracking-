@@ -6,20 +6,20 @@
 {% block content %}
         
         <div style='margin-top:30px;'>
-            <form action="" method="post" id="loginform">{% csrf_token %}
+            <form action="/signup/?" id="loginform">{% csrf_token %}
                 {% if error %}
                 <p style='color:red'>{{ error }}</p>
                 {% endif %}
             </div>
                 <input type='text' name='username'
                     placeholder='username' />
-                </div>
-                <div>
+                
                     <input type='password' name='password' placeholder='password' />
+                    <button type="submit" form="loginform">Log in</button>
                 </div>
                 </form>
                 
-                <button type="submit" form="loginform">Log in</button>
+                
             </div>
        
             
