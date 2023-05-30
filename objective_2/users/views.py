@@ -116,7 +116,7 @@ def Signup(request):
     return render(request, 'users/signup.html',{})
 
 def welcome(request):
-    users = User.object.all()
+    users = Users.object.all()
     
     context = {
         'users': users,
