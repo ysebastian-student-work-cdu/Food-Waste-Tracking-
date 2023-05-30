@@ -1,17 +1,17 @@
-﻿{% load index %}
+{% load index %}
 <html>
 <head>
 
 </head>
 <body>
     {% for donation in donations %}
-    <form action="update" method="post">
+    <form action="delete" method="post">
         {% csrf_token %}
-        <input type="text" name ="id" value="{{ ids|index:forloop.counter0 }}" />
+        <input type="text" name="id" value="{{ ids|index:forloop.counter0 }}" />
         <table>
             {{ donation.as_table }}
         </table>
-        <input type="submit" value="Donate" />
+        <input type="submit" value="Delete" />
     </form>
     {% endfor %}
 </body>

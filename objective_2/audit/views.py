@@ -1,3 +1,10 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime, timezone
+from django.http import HttpResponse
+from .forms import CreateWasteEntry
+from django.core import serializers
+from django.template import loader
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404
@@ -59,7 +66,7 @@ def delete_waste_item(request, waste_item_id):
     waste_item.delete()
     return redirect('audit:entries')
 
-
+    '''  Remove !!!
 # Payment
 @csrf_exempt
 def initiate_payment(request):
@@ -85,6 +92,7 @@ def complete_payment(request, payment_id):
     payment.save()
 
     return JsonResponse({'message': 'Payment completed successfully.'})
+'''
 '''
 Adds a new user to the user table
 '''
@@ -129,32 +137,30 @@ def log_read(request):
 '''
 
 def donate(request):
-	request.session['id'] = 3
-	form = DonationForm(initial=
+    if request.method == 'POST':
+        form = DonationForm(request.POST)
+        if form.is_valid:
+            form.save()
+   
+
+    request.session['id'] = 1
+    form = DonationForm(initial=
         {
-            'userID':Users.objects.get(userID = 1),
-            'date': datetime.now(timezone.utc)
+            'userID':Users.objects.get(userID = request.session['id']),
+            'date': '12/05/13'
         }
     )
-	page_data = {'myform': form}
+    page_data = {'myform': form}
 
-	return render(request, app_name + 'donate_create.html', page_data)
+    return render(request, app_name + 'donate_create.html', page_data)
 
 def submit_donation(request):
     redir = HttpResponse("valod")
-    if request.method == 'POST':
-        try:
-            model = Donate.objects.get(id=request.POST.get('id'))   # get correct model instance
-            form = DonationForm(request.POST, instance = model)
-            redir= render(request , app_name+ "donate_update.html")
-            form = DonationForm(request.POST)
-        except ObjectDoesNotExist:
-            form = DonationForm(request.POST)
-            redir= render(request , app_name+ "donate_create.html")
-        if form.is_valid():
-            form.save()
+    form = DonationForm(request.POST)
+    if form.is_valid():
+        form.save()
             
-    return render(request, app_name +'donate_update.html')
+    return render(request, app_name +'donate_create.html')
 '''
 Displays all donations made by user
 '''
@@ -173,6 +179,12 @@ def donate_read(request):
 donate_update
 '''
 def donate_update(request):
+    if request.method == 'POST':
+        model = Donate.objects.get(id=request.POST.get('id'))   # get correct model instance
+        form = DonationForm(request.POST, instance = model)
+        if form.is_valid():
+            form.save()
+    
     forms = []
     ids =[]
     donates = Donate.objects.all().filter(userID=request.session['id'])
@@ -183,7 +195,21 @@ def donate_update(request):
                 'ids': ids}    
     return render(request, app_name + 'donate_update.html', content)
 
+def donate_delete(request):  
+    if request.method == 'POST':
+        Donate.objects.filter(pk=request.POST.get('id')).delete()   # get correct model instance
+        
     
+    forms = []
+    ids =[]
+    donates = Donate.objects.all().filter(userID=request.session['id'])
+    for model in donates:
+        forms.append(DonationForm(instance = model))
+        ids.append(getattr(model, 'id'))
+    content = { 'donations': forms,
+                'ids': ids}    
+    return render(request, app_name + 'donate_delete.html', content)
+
 
 def accounts(request):
 	return render(request, 'audit/accounts.html')

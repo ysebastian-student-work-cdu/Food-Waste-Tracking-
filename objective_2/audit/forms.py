@@ -12,7 +12,7 @@ class DonationForm(forms.ModelForm):
       
         fields = ('userID','orgID', 'amount', 'date')
         widgets = {
-                       #'userID':forms.HiddenInput(), 
+                       'userID':forms.HiddenInput(), 
                        'date': forms.TextInput(attrs={'readonly': 'readonly'})
                   }
 
