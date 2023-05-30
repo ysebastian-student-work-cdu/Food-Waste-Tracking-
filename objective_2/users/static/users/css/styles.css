@@ -32,7 +32,9 @@ img {
     transition: background-color 300ms;
     border-radius: 25px;
 }
-
+nav ul{
+  display: flex;
+}
 .nagivation-images {
     display: flex;
     justify-content: space-between;
@@ -44,6 +46,7 @@ img {
     text-align: center;
     margin: 0 10px;
   }
+  
   
   .nagivation-images article img {
     max-width: 100%;
@@ -62,9 +65,13 @@ img {
     display: flex;
     justify-content: space-between;
     list-style: none;
-    padding: 0;
-}
+    padding: 12px;
+    margin: 12px;
 
+}
+a.nav-link {
+  margin: 120px;
+}
 .navigation-links li {
     flex: 1;
     text-align: center;
