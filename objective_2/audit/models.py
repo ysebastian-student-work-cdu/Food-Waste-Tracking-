@@ -76,7 +76,7 @@ class Organisation(models.Model):
 class Donate(models.Model):
      userID= models.ForeignKey(Users, on_delete =models.CASCADE, db_column = 'userID')    # foreign key of userID in user table
      orgID= models.ForeignKey(Organisation, on_delete = models.CASCADE, db_column = 'orgid') # Foreigh  key of organisation id field
-     amount = models.DecimalField(max_digits=7, decimal_places=2) # Amount donated by the user (max is $9999999 for one donation)
+     amount = models.IntegerField() # Amount donated by the user (max is $9999999 for one donation)
      date = models.DateTimeField()
      def __str__(self):
         return str(self.userID.userID)
