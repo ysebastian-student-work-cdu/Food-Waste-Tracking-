@@ -6,7 +6,8 @@
 {% block content %}
         
         <div style='margin-top:30px;'>
-            <form action="/signup/?" id="loginform">{% csrf_token %}
+            <form action="/signup/?" id="loginform">
+                {% csrf_token %}
                 {% if error %}
                 <p style='color:red'>{{ error }}</p>
                 {% endif %}

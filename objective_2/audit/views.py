@@ -20,6 +20,8 @@ from . import utils
 app_name = 'audit/'
 sessionid = 1
 # Create your views here
+def auditHome(request):
+    return render(request, 'audit/AuditHomePage.html')
 
 def waste_entries(request):
     entries = WasteEntries.objects.all()

@@ -7,6 +7,7 @@ app_name = 'audit'
 
 urlpatterns = [
     path('create/', views.create_waste_entry, name='create'),
+    path('', views.auditHome, name='auditHome'),
     path('entries/<int:waste_entry_id>/delete/', views.delete_waste_entry, name='delete_entry'),
     path('entries/', views.waste_entries, name='entries'),
 
