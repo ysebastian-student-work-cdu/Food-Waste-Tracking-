@@ -130,8 +130,6 @@ def submit_donation(request):
             redir= render(request , app_name+ "donate_create.html")
         if form.is_valid():
             form.save()
-            return HttpResponse("valod")
-            
             
     return render(request, app_name +'donate_update.html')
 '''
@@ -152,7 +150,6 @@ def donate_read(request):
 donate_update
 '''
 def donate_update(request):
-    
     forms = []
     ids =[]
     donates = Donate.objects.all().filter(userID=request.session['id'])
