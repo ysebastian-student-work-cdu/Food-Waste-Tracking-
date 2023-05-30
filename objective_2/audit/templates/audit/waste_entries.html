@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Waste Entries</title>
-</head>
-<body>
-    <h1>Waste Entries</h1>
-    <a href="{% url 'audit:create' %}">Create Waste Entry</a>
-    {% for entry in entries %}
-        <h2>{{ entry.userID.username }}</h2>
-        <p>{{ entry.wasteEntryID }}</p>
-        <p>{{ entry.date }}</p>
-        <a href="{% url 'audit:items' entry.wasteEntryID %}">View Waste Items</a>
-        <a href="{% url 'audit:delete_entry' entry.wasteEntryID %}">Delete</a>
-        <hr>
-    {% endfor %}
-</body>
-</html>
+{% extends 'users/__base.html' %}
 
+{% block title %}
+<title>Waste Entries</title>
+{% endblock%}
 
+{% block content %}
+<h1>Waste Entries</h1>
+<a href="{% url 'audit:create' %}">Create Waste Entry</a>
+{% for entry in entries %}
+    <h2>{{ entry.userID.username }}</h2>
+    <p>{{ entry.wasteEntryID }}</p>
+    <p>{{ entry.date }}</p>
+    <a href="{% url 'audit:items' entry.wasteEntryID %}">View Waste Items</a>
+    <a href="{% url 'audit:delete_entry' entry.wasteEntryID %}">Delete</a>
+    <hr>
+{% endfor %}
+{% endblock%}

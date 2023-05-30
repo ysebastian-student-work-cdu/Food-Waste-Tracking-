@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Waste Entry</title>
-</head>
-<body>
-    <h1>Create Waste Entry</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="javascript:history.back()">Cancel</a>
-</body>
-</html>
+{% extends 'users/__base.html' %}
+
+{% block title %}
+<title>Create Waste Entry</title>
+{% endblock%}
+
+{% block content %}
+<h1>Create Waste Entry</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="javascript:history.back()">Cancel</a>
+{% endblock%}

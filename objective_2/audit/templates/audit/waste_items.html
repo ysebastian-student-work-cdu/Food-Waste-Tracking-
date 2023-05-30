@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Waste Items</title>
-</head>
-<body>
-    <h1>Waste Entry Details</h1>
-    <p>Waste Entry ID: {{ waste_entry.wasteEntryID }}</p>
-    <p>User: {{ waste_entry.userID.username }}</p>
-    <p>Date: {{ waste_entry.date }}</p>
+{% extends 'users/__base.html' %}
 
-    <a href="{% url 'audit:create_item' waste_entry.wasteEntryID %}">Add Waste Item</a>
+{% block title %}
+<title>Waste Items</title>
+{% endblock%}
 
-    <h2>Waste Items</h2>
-    <ul>
-        {% for item in waste_items %}
-            <li> Item: {{ item.itemDescription }}, Quantity: {{ item.quantity }} <a href="{% url 'audit:delete_item' item.wasteItemID %}">Delete</a></li>
-        {% empty %}
-            <li>No waste items found.</li>
-        {% endfor %}
-    </ul>
+{% block content %}
+<h1>Waste Entry Details</h1>
+<p>Waste Entry ID: {{ waste_entry.wasteEntryID }}</p>
+<p>User: {{ waste_entry.userID.username }}</p>
+<p>Date: {{ waste_entry.date }}</p>
 
-    <a href="{% url 'audit:entries' %}">Back to entries</a>
-</body>
-</html>
+<a href="{% url 'audit:create_item' waste_entry.wasteEntryID %}">Add Waste Item</a>
+
+<h2>Waste Items</h2>
+<ul>
+    {% for item in waste_items %}
+        <li> Item: {{ item.itemDescription }}, Quantity: {{ item.quantity }} <a href="{% url 'audit:delete_item' item.wasteItemID %}">Delete</a></li>
+    {% empty %}
+        <li>No waste items found.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'audit:entries' %}">Back to entries</a>
+{% endblock%}
