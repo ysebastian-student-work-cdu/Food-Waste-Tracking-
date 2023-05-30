@@ -98,10 +98,8 @@ def LoginView(request):
     return redirect(login)
     
 def LogoutView(request):
-    if request.method == 'POST':
-        logout(request)
-        return redirect('/login/')
-    return render(request, 'users/logout.html',{})
+    logout = reverse("audit:logout")
+    return redirect(logout)
 
 def Signup(request):
     return render(request, 'users/signup.html',{})

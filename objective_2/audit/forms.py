@@ -39,10 +39,13 @@ class CreateWasteEntry(forms.ModelForm):
     class Meta:
         model = WasteEntries
         fields = ['userID', 'date']
+        widgets = {'userID':forms.HiddenInput()}
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['date'].widget = forms.DateInput(attrs={'type': 'date'})
+
 
 class WasteItemForm(forms.ModelForm):
     class Meta:

@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.auditHome, name='auditHome'),
 
     path('login/', views.LoginView, name='login'),    
-   # path('logout/', auth_views.LogoutView.as_view(), name='logout'),    
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),    
     
 
     path('create/', views.create_waste_entry, name='create'),

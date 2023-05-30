@@ -32,7 +32,7 @@ def LoginView(request):
         userid = getattr(user, 'id')
         request.session['id'] = userid
         homepage = reverse('audit:auditHome')
-        return HttpResponse(str(userid))
+        return redirect(homepage)
     return render(request, 'users/login.html',{})    
 
 def LogoutView(request):
@@ -48,7 +48,7 @@ def auditHome(request):
     return render(request, 'audit/AuditHomePage.html')
 
 def waste_entries(request):
-    entries = WasteEntries.objects.all()
+    entries = WasteEntries.objects.filter(userID = request.session['id'])
     return render(request, 'audit/waste_entries.html', {'entries': entries})
 
 def waste_items(request, waste_entry_id):
@@ -60,10 +60,12 @@ def create_waste_entry(request):
     if request.method == 'POST':
         form = CreateWasteEntry(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('audit:entries')  # Replace 'blog:posts' with your desired redirect URL
-    else:
-        form = CreateWasteEntry()
+            entry = form.save()
+            wasteid = getattr(entry, 'wasteEntryID')
+            # redirect user to enter their waste items
+            return redirect(f'/audit/items/{wasteid}/create/')  
+            
+    form = CreateWasteEntry(initial= {'userID':request.session['id']})
     
     return render(request, 'audit/create_waste_entry.html', {'form': form})
 
@@ -174,20 +176,13 @@ def donate(request):
     form = DonationForm(initial=
         {
             'userID':Users.objects.get(userID = request.session['id']),
-            'date': datetime.now(timezone.utc).strftime('%Y/%m/%d')
+            'date': '10/4/12'
         }
     )
     page_data = {'myform': form}
 
     return render(request, app_name + 'donate_create.html', page_data)
 
-def submit_donation(request):
-    redir = HttpResponse("valid")
-    form = DonationForm(request.POST)
-    if form.is_valid():
-        form.save()
-            
-    return render(request, app_name +'donate_create.html')
 '''
 Displays all donations made by user
 '''
