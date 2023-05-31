@@ -13,16 +13,11 @@ class DonationForm(forms.ModelForm):
         fields = ('userID','orgID', 'amount', 'date')
         widgets = {
                        'userID':forms.HiddenInput(), 
-                       'date': forms.TextInput(attrs={'readonly': 'readonly'})
                   }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['date'].widget = forms.DateInput(attrs={'type': 'date'})
 
-
-class DonationsForm(forms.Form):
-
-    userID= forms.CharField(widget = forms.HiddenInput(), max_length=30)    # foreign key of userID in user table
-    orgID= forms.CharField(max_length=30)# Foreigh  key of organisation id field
-    amount = forms.IntegerField() # Amount donated by the user (max is $9999999 for one donation)
-    date = forms.DateField(widget = forms.HiddenInput())
 
 
 

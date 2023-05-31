@@ -27,7 +27,7 @@ def LoginView(request):
         if user is None:
             context = {"error": "Invalid username or password!"}
             return render(request, 'users/login.html',context)
-        # send user to homepage and session userid
+        # send user to homepage and add user id to session 
         login(request,user)
         userid = getattr(user, 'id')
         request.session['id'] = userid
@@ -165,21 +165,23 @@ def log_read(request):
 '''
 
 def donate(request):
-    #request.session['id'] = 1
+    error = 2
     if request.method == 'POST':
         form = DonationForm(request.POST)
-        if form.is_valid:
-            form.save()
-    
-    #Donate.objects.all().delete()
+        if form.is_valid():
+            date = form.cleaned_data['date']
+            if date.date() < datetime.now().date():
+                error = 0
+            else:
+                error = 1
+                form.save()
     
     form = DonationForm(initial=
         {
             'userID':Users.objects.get(userID = request.session['id']),
-            'date': '10/4/12'
         }
     )
-    page_data = {'myform': form}
+    page_data = {'myform': form, 'error':error}
 
     return render(request, app_name + 'donate_create.html', page_data)
 
@@ -190,7 +192,8 @@ Displays all donations made by user
 def donate_read(request):
     forms = []
     dates =[]
-    donates = Donate.objects.all().filter(userID = request.session['id'])
+    donates = Donate.objects.all().filter(userID = request.session['id']).\
+              filter(date__lt=datetime.now().date())  
     for model in donates:
         forms.append(DonationForm(instance = model))
         
@@ -201,20 +204,28 @@ def donate_read(request):
 donate_update
 '''
 def donate_update(request):
+    error = 2
     if request.method == 'POST':
         model = Donate.objects.get(id=request.POST.get('id'))   # get correct model instance
         form = DonationForm(request.POST, instance = model)
         if form.is_valid():
-            form.save()
-    
+            error=0
+            date = form.cleaned_data['date']
+            if date.date() < datetime.now().date():
+                error = 0
+            else:
+                error = 1
+                form.save()    
     forms = []
     ids =[]
-    donates = Donate.objects.all().filter(userID=request.session['id'])
+    donates = Donate.objects.all().filter(userID=request.session['id'])\
+              .filter(date__gte=datetime.now().date())
     for model in donates:
         forms.append(DonationForm(instance = model))
         ids.append(getattr(model, 'id'))
     content = { 'donations': forms,
-                'ids': ids}    
+                'ids': ids,
+                'error':error}    
     return render(request, app_name + 'donate_update.html', content)
 
 def donate_delete(request):  

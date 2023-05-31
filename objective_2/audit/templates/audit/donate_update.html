@@ -4,11 +4,16 @@
 
 </head>
 <body>
-    <a ="{% url 'donate_delete' %}>Go to donation deletion</a>
+    <a href="{% url 'audit:auditHome' %}">Back to home</a>
+    {% if error == 0 %}
+    <p style="color:red;"> Date must be in the future </p>
+    {% elif error == 1 %}
+    <p style="color:green;"> Submitted </p>
+    {% endif %}
     {% for donation in donations %}
     <form action="update" method="post">
         {% csrf_token %}
-        <input type="text" name ="id" value="{{ ids|index:forloop.counter0 }}" />
+        <input type="text" name="id" value="{{ ids|index:forloop.counter0 }}" readonly="readonly"/>
         <table>
             {{ donation.as_table }}
         </table>
