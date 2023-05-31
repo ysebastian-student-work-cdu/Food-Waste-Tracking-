@@ -225,14 +225,18 @@ def savefood(request):
         form = recipeForm(request.POST)
         if form.is_valid():
             form.save()
+        
         saved_data = FoodForm.objects.all()
-        item1 = form['nameofItem1']
-        item2 = form['nameofItem2']
-        item3 = form['nameofItem3']
+        item1 = form.cleaned_data['nameofItem1']
+        item2 = form.cleaned_data['nameofItem2']
+        item3 = form.cleaned_data['nameofItem3']
+        
         recipe = Recipe.generate_recipe(item1, item2, item3)
+        
         recipes = RecipesSaved()
-        recipes.recipe = recipe
+        recipes.Recipe = recipe
         recipes.save()
+    
     return render(request, 'audit/recipefoodsave.html', {'Recipes': recipe})
 
 def recipe_list(request):
