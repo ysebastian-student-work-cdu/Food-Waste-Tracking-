@@ -63,5 +63,10 @@ class FoodForm(models.Model):
     def  __str__(self) -> str:
         return self.nameofItem1
     
- 
+class RecipesSaved(models.Model):
+    Recipe=models.CharField(max_length=2000)
+    
+    def __str__(self):
+        return self.Recipe  
+    
 

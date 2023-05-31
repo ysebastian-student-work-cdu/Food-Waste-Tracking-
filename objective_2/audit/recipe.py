@@ -10,7 +10,7 @@ class Recipe:
         prompt = f"Generate a recipe using the following ingredients: {food_items}"
 
         # Set your OpenAI API key
-        api_key = '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'
+        api_key = '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'
         
         # Make the API request to OpenAI ChatGPT3.5 Turbo
         response = requests.post(
