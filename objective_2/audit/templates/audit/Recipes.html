@@ -3,11 +3,13 @@
 <title>Recipes</title>
 {% endblock%}
 {% block content %}
+Enter the Food that you may throw away, and see the what recipes you can make with them!
+with leftover food, save the enviornemnt and save money!
     <form action="/audit/recipefoodsave.html/" method="post" >
         {% csrf_token %}
         <table>
           {{ myForm.as_table }}
         </table>
-        <input type="submit" value="Add Publisher">
+        <input type="submit" value="Genereate your Recipe" />
       </form>
 {% endblock%}
