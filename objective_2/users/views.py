@@ -94,25 +94,12 @@ def wastelist(request):
 
 
 def LoginView(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is None:
-            context = {"error": "Invalid username or password!"}
-            return render(request, 'users/login.html',context)
-        # send user to hompage and add userid to session
-        login(request,user)
-        request.session['id'] = 1
-        homepage = reverse('audit:homepage')
-        return redirect(homepage)
-    return render(request, 'users/login.html',{})    
-
+    login = reverse("audit:login")
+    return redirect(login)
+    
 def LogoutView(request):
-    if request.method == 'POST':
-        logout(request)
-        return redirect('/login/')
-    return render(request, 'users/logout.html',{})
+    logout = reverse("audit:logout")
+    return redirect(logout)
 
 def Signup(request):
     return render(request, 'users/signup.html',{})

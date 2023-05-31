@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime, timezone
 from django.http import HttpResponse
-from .forms import CreateWasteEntry
 from django.core import serializers
+from .forms import CreateWasteEntry
 from django.template import loader
-from django.http import HttpResponse
-from django.template import loader
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from .models import *
 from .forms import *
@@ -18,18 +16,39 @@ from . import utils
 
 
 app_name = 'audit/'
-sessionid = 1
+
 # Create your views here
+
+def LoginView(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            context = {"error": "Invalid username or password!"}
+            return render(request, 'users/login.html',context)
+        # send user to homepage and add user id to session 
+        login(request,user)
+        userid = getattr(user, 'id')
+        request.session['id'] = userid
+        homepage = reverse('audit:auditHome')
+        return redirect(homepage)
+    return render(request, 'users/login.html',{})    
+
+def LogoutView(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('/login/')
+    return render(request, 'users/logout.html',{})
+
+
+
 def auditHome(request):
+    # if session is 0 return user to some view that they need to login
     return render(request, 'audit/AuditHomePage.html')
 
-def homepage(request):
-    #add user id to session
-    #request.session['id'] = 
-    return render(request, app_name + 'homepage.html')
-
 def waste_entries(request):
-    entries = WasteEntries.objects.all()
+    entries = WasteEntries.objects.filter(userID = request.session['id'])
     return render(request, 'audit/waste_entries.html', {'entries': entries})
 
 def waste_items(request, waste_entry_id):
@@ -41,10 +60,12 @@ def create_waste_entry(request):
     if request.method == 'POST':
         form = CreateWasteEntry(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('audit:entries')  # Replace 'blog:posts' with your desired redirect URL
-    else:
-        form = CreateWasteEntry()
+            entry = form.save()
+            wasteid = getattr(entry, 'wasteEntryID')
+            # redirect user to enter their waste items
+            return redirect(f'/audit/items/{wasteid}/create/')  
+            
+    form = CreateWasteEntry(initial= {'userID':request.session['id']})
     
     return render(request, 'audit/create_waste_entry.html', {'form': form})
 
@@ -143,31 +164,26 @@ def log_read(request):
 '''
 
 def donate(request):
-    request.session['id'] = 1
+    error = 2
     if request.method == 'POST':
         form = DonationForm(request.POST)
-        if form.is_valid:
-            form.save()
-    
-    #Donate.objects.all().delete()
+        if form.is_valid():
+            date = form.cleaned_data['date']
+            if date.date() < datetime.now().date():
+                error = 0
+            else:
+                error = 1
+                form.save()
     
     form = DonationForm(initial=
         {
             'userID':Users.objects.get(userID = request.session['id']),
-            'date': datetime.now(timezone.utc).strftime('%Y/%m/%d')
         }
     )
-    page_data = {'myform': form}
+    page_data = {'myform': form, 'error':error}
 
     return render(request, app_name + 'donate_create.html', page_data)
 
-def submit_donation(request):
-    redir = HttpResponse("valid")
-    form = DonationForm(request.POST)
-    if form.is_valid():
-        form.save()
-            
-    return render(request, app_name +'donate_create.html')
 '''
 Displays all donations made by user
 '''
@@ -175,7 +191,8 @@ Displays all donations made by user
 def donate_read(request):
     forms = []
     dates =[]
-    donates = Donate.objects.all().filter(userID = request.session['id'])
+    donates = Donate.objects.all().filter(userID = request.session['id']).\
+              filter(date__lt=datetime.now().date())  
     for model in donates:
         forms.append(DonationForm(instance = model))
         
@@ -186,20 +203,28 @@ def donate_read(request):
 donate_update
 '''
 def donate_update(request):
+    error = 2
     if request.method == 'POST':
         model = Donate.objects.get(id=request.POST.get('id'))   # get correct model instance
         form = DonationForm(request.POST, instance = model)
         if form.is_valid():
-            form.save()
-    
+            error=0
+            date = form.cleaned_data['date']
+            if date.date() < datetime.now().date():
+                error = 0
+            else:
+                error = 1
+                form.save()    
     forms = []
     ids =[]
-    donates = Donate.objects.all().filter(userID=request.session['id'])
+    donates = Donate.objects.all().filter(userID=request.session['id'])\
+              .filter(date__gte=datetime.now().date())
     for model in donates:
         forms.append(DonationForm(instance = model))
         ids.append(getattr(model, 'id'))
     content = { 'donations': forms,
-                'ids': ids}    
+                'ids': ids,
+                'error':error}    
     return render(request, app_name + 'donate_update.html', content)
 
 def donate_delete(request):  
