@@ -45,6 +45,7 @@ def LogoutView(request):
 
 def auditHome(request):
     # if session is 0 return user to some view that they need to login
+    if request.session['id']
     return render(request, 'audit/AuditHomePage.html')
 
 def waste_entries(request):
