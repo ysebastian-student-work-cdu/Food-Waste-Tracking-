@@ -1,13 +1,15 @@
-<html>
-<head>
+{% extends 'users/__base.html' %}
 
-</head>
-<body>
-    <a href="{% url 'audit:donate_delete' %}">Go to donation deletion</a>
+{% block title %}
+<title>Past Donations</title>
+{% endblock%}
+
+{% block content %}
+<a href="{% url 'audit:auditHome' %}">Back to home</a>
+<a href="{% url 'audit:donate_delete' %}">Go to donation deletion</a>
     {% for donation in donations %}
-    <fieldset disabled="disabled">
-        {{ donation.as_table }}
-    </fieldset>
+<fieldset disabled="disabled">
+    {{ donation.as_table }}
+</fieldset>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

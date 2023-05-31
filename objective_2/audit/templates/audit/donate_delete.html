@@ -1,9 +1,12 @@
+{% extends 'users/__base.html' %}
 {% load index %}
-<html>
-<head>
 
-</head>
-<body>
+{% block title %}
+<title>Delete Upcoming Donation</title>
+{% endblock%}
+
+{% block content %}
+<a href="{% url 'audit:donate_read' %}">Back</a>
     {% for donation in donations %}
     <form action="delete" method="post">
         {% csrf_token %}
@@ -14,5 +17,6 @@
         <input type="submit" value="Delete" />
     </form>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
+

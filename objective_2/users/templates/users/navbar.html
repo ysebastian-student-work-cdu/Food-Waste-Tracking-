@@ -7,12 +7,16 @@
             <li class="nav-item">
                 <a class="nav-link {% if navbar == 'list' %} active {% endif %}" href="{% url 'audit:list' %}">List</a>
             </li>
-            
-             <li class="nav-item" id="log">
+
+            <li class="nav-item" id="log">
                 <a class="nav-link {% if navbar == 'login' %} active {% endif %}" href="{% url 'login' %}">Log in</a>
             </li>
-            
-             
+
+            <li class="nav-item" id="log">
+                <a class="nav-link {% if navbar == 'loginout' %} active {% endif %}" href="{% url 'logout' %}">Log out</a>
+            </li>
+
+
             <li class="nav-item">
                 <a class="nav-link {% if navbar == 'wastelist' %} active {% endif %}" href="{% url 'wastelist' %}">Waste list</a>
             </li>

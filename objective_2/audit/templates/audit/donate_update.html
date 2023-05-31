@@ -1,24 +1,25 @@
-﻿{% load index %}
-<html>
-<head>
+﻿{% extends 'users/__base.html' %}
+{% load index %}
 
-</head>
-<body>
-    <a href="{% url 'audit:auditHome' %}">Back to home</a>
+{% block title %}
+<title>Update Upcoming Donations</title>
+{% endblock%}
+
+{% block content %}
+<a href="{% url 'audit:auditHome' %}">Back to home</a>
     {% if error == 0 %}
-    <p style="color:red;"> Date must be in the future </p>
+<p style="color:red;"> Date must be in the future </p>
     {% elif error == 1 %}
-    <p style="color:green;"> Submitted </p>
+<p style="color:green;"> Submitted </p>
     {% endif %}
     {% for donation in donations %}
-    <form action="update" method="post">
-        {% csrf_token %}
-        <input type="text" name="id" value="{{ ids|index:forloop.counter0 }}" readonly="readonly"/>
-        <table>
-            {{ donation.as_table }}
-        </table>
-        <input type="submit" value="Donate" />
-    </form>
+<form action="update" method="post">
+    {% csrf_token %}
+    <input type="text" name="id" value="{{ ids|index:forloop.counter0 }}" readonly="readonly" />
+    <table>
+        {{ donation.as_table }}
+    </table>
+    <input type="submit" value="Donate" />
+</form>
     {% endfor %}
-</body>
-</html>
+    {% endblock %}

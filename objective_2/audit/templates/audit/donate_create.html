@@ -1,20 +1,21 @@
-<html>
-<head>
+{% extends 'users/__base.html' %}
 
-</head>
-<body>
-    <form action="donate" method="post">
-        {% csrf_token %}
-        <table>
-            {{ myform.as_table }}
-        </table>
-        <input type="submit" value="Donate" />
-    </form>
+{% block title %}
+<title>Donate to Food Waste Organisation</title>
+{% endblock%}
+
+{% block content %}
+<form action="donate" method="post">
+    {% csrf_token %}
+    <table>
+        {{ myform.as_table }}
+    </table>
+    <input type="submit" value="Donate" />
+</form>
     {% if error == 0 %}
-    <p style="color:red;"> Date must be in the future </p>
+<p style="color:red;"> Date must be in the future </p>
     {% elif error == 1 %}
-    <p style="color:green;"> Submitted </p>
+<p style="color:green;"> Submitted </p>
     {% endif %}
-    <a href="{% url 'audit:auditHome' %}">Back to home</a>
-</body>
-</html>
+<a href="{% url 'audit:auditHome' %}">Back to home</a>
+{% endblock %}
