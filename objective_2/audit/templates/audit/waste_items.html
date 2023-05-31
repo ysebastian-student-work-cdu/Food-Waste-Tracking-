@@ -5,14 +5,14 @@
 {% endblock%}
 
 {% block content %}
-<h1>Waste Entry Details</h1>
+<h1><u>Waste Entry Details</u></h1>
 <p>Waste Entry ID: {{ waste_entry.wasteEntryID }}</p>
 <p>User: {{ waste_entry.userID.username }}</p>
 <p>Date: {{ waste_entry.date }}</p>
 
 <a href="{% url 'audit:create_item' waste_entry.wasteEntryID %}">Add Waste Item</a>
 
-<h2>Waste Items</h2>
+<h2><u>Waste Items</u></h2>
 <ul>
     {% for item in waste_items %}
         <li> Item: {{ item.itemDescription }}, Quantity: {{ item.quantity }} <a href="{% url 'audit:delete_item' item.wasteItemID %}">Delete</a></li>
