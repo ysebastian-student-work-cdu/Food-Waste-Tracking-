@@ -25,6 +25,7 @@ urlpatterns = [
     path('donate/update', views.donate_update, name = 'donate_update'),
     path('donate/delete', views.donate_delete, name = 'donate_delete'),
     path('', views.accounts, name='accounts'),
+    path('recipes/', views.recipe_list, name='recipe_list'),
     path('add_food/',views.add_food,name='add_food'),
     path('recipefoodsave.html/',views.savefood,name='savefoodss'),
    # path('initiate-payment/', views.initiate_payment, name='initiate_payment'),

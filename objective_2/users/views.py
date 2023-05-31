@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, reverse
 from . import items
 from django.contrib.auth import authenticate, login, logout
 from .info import Info
-from audit.models import Users, WasteItems
+from audit.models import  WasteItems
 
 def index(request):
     return render(request, 'users/index.html')
@@ -83,10 +83,6 @@ def wastage(request):
     }
     return render(request,'users/data_model.html',context)
 
-def wastelist(request):
-    wastelist= WasteCollection.objects.all()
-
-    return render(request, 'users/wastelist.html', {'wastelist': wastelist})
 
 
 def LoginView(request):
@@ -100,11 +96,3 @@ def LogoutView(request):
 def Signup(request):
     return render(request, 'users/signup.html',{})
 
-def welcome(request):
-    users = Users.objects.all()
-    
-    context = {
-        'users': users,
-    }
-
-    return render(request, 'users/welcome.html', context)

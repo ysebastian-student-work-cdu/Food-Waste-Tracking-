@@ -15,12 +15,10 @@ urlpatterns = [
     path('analyze', views.calculator, name='calculator_analyzed'),
     path('items/<id>', views.detail, name='items'),
     path('<invalid>', views.invalid, name='invalid'),
-    path('wastelist', views.wastelist, name='wastelist'),
     path('accounts/', include("django.contrib.auth.urls")),
     path('signup/', views.Signup, name='signup'),
     path('login/', views.LoginView, name='login'), 
     path('logout/', views.LogoutView, name='logout'), 
-    path('welcome/', views.welcome, name='welcome'),
     #path('audit/', views.audit, name='audit'),
     path('admin/', admin.site.urls),
 ]

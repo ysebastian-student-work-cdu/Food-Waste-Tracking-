@@ -233,7 +233,8 @@ def savefood(request):
         recipes = RecipesSaved()
         recipes.recipe = recipe
         recipes.save()
-
     return render(request, 'audit/recipefoodsave.html', {'Recipes': recipe})
 
-        
+def recipe_list(request):
+    recipes = RecipesSaved.objects.all()
+    return render(request, 'audit/recipe_list.html', {'recipes': recipes})
