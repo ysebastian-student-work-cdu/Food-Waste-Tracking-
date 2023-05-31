@@ -1,43 +1,13 @@
 from django import forms
 from django.db import models
+from django.contrib.auth import models as auth
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.utils.html import format_html
-
-class UserRoles(models.Model):
-    roleID = models.IntegerField(primary_key=True)
-    roleName = models.CharField(max_length=32)
-
-    class Meta:
-        verbose_name_plural = "User Roles"
-
-    def __str__(self):
-        return self.roleName
-
-class Users(models.Model):
-    userID = models.AutoField(primary_key=True)
-    roleID = models.ForeignKey(UserRoles, on_delete=models.CASCADE)
-    username = models.CharField(
-        max_length=32,
-        validators=[MinLengthValidator(5)]
-    )
-    password = models.CharField(
-        max_length=64,
-        validators=[MinLengthValidator(8)]
-    )
-    nickname = models.CharField(max_length=50)
-    location = models.CharField(max_length=50)
-    email = models.EmailField()
-
-    class Meta:
-        verbose_name_plural = "Users"
-
-    def __str__(self):
-        return str(self.username)
 
 class WasteEntries(models.Model):
     wasteEntryID = models.AutoField(primary_key=True)
     userID = models.ForeignKey(
-        Users,
+        auth.User,
         on_delete=models.CASCADE,
         db_column='userID'
     )
@@ -47,7 +17,7 @@ class WasteEntries(models.Model):
         verbose_name_plural = "Waste Entries"
 
     def __str__(self):
-        return f"{self.wasteEntryID}. {self.userID.username} ({self.date})"
+        return f"{self.wasteEntryID}. {self.userID} ({self.date})"
 
 class WasteItems(models.Model):
     wasteItemID = models.AutoField(primary_key=True)
@@ -61,7 +31,7 @@ class WasteItems(models.Model):
         verbose_name_plural = "Waste Items"
 
     def __str__(self):
-        return f"{self.itemDescription}, {self.wasteEntryID.userID.username} ({self.wasteEntryID.date})"
+        return f"{self.itemDescription}, {self.wasteEntryID.userID} ({self.wasteEntryID.date})"
 
 
 class Organisation(models.Model):
@@ -74,12 +44,12 @@ class Organisation(models.Model):
         return self.orgid
 
 class Donate(models.Model):
-     userID= models.ForeignKey(Users, on_delete =models.CASCADE, db_column = 'userID')    # foreign key of userID in user table
+     userID= models.ForeignKey(auth.User, on_delete =models.CASCADE, db_column = 'userID')    # foreign key of userID in user table
      orgID= models.ForeignKey(Organisation, on_delete = models.CASCADE, db_column = 'orgid') # Foreigh  key of organisation id field
      amount = models.IntegerField('Amount(kg)') # Amount donated by the user (max is $9999999 for one donation)
      date = models.DateTimeField()
      def __str__(self):
-        return str(self.userID.userID)
+        return str(self.userID)
 
 # For getting the recipies from the waste produce 
 class FoodForm(models.Model):

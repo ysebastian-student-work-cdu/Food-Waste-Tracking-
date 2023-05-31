@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import models as authmodels
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime, timezone
@@ -141,7 +142,7 @@ def donate(request):
     
     form = DonationForm(initial=
         {
-            'userID':Users.objects.get(userID = request.session['id']),
+            'userID':authmodels.User.objects.get(id = request.session['id']),
         }
     )
     page_data = {'myform': form, 'error':error}

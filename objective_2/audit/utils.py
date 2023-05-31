@@ -1,4 +1,4 @@
-from audit.models import UserRoles, Users, WasteItems
+from audit.models import WasteItems
 
 def create_user(role_id, username, password, nickname, location, email):
     try:

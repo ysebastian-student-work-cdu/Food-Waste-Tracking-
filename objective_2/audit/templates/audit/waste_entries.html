@@ -15,4 +15,6 @@
     <a href="{% url 'audit:delete_entry' entry.wasteEntryID %}">Delete</a>
     <hr>
 {% endfor %}
+    <br />
+    <a href="{% url 'audit:auditHome' %}">Back</a>
 {% endblock%}
