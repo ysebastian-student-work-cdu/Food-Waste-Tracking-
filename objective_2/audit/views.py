@@ -121,6 +121,10 @@ def complete_payment(request, payment_id):
     return JsonResponse({'message': 'Payment completed successfully.'})
 
 def list(request):
+    try:
+        request.session['id']
+    except:
+        return redirect('/login/')
     return render(request, 'audit/AuditHomepage.html')
 
 def donate(request):
