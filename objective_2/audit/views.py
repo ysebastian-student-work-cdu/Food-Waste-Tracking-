@@ -73,7 +73,6 @@ def delete_waste_item(request, waste_item_id):
     waste_item.delete()
     return redirect('audit:entries')
 
-    '''  Remove !!!
 # Payment
 @csrf_exempt
 def initiate_payment(request):
@@ -99,7 +98,7 @@ def complete_payment(request, payment_id):
     payment.save()
 
     return JsonResponse({'message': 'Payment completed successfully.'})
-'''
+
 '''
 Adds a new user to the user table
 '''
